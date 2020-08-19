@@ -1,0 +1,1197 @@
+
+<!-- saved from url=(0048)https://www.songma.com/news/txtlist_i28215v.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=GBK">
+<meta http-equiv="x-ua-compatible" content="ie=7">
+
+<meta name="keywords" content="缓存,服务端,数据,时间,重定向">
+<meta name="description" content="后期我会面试50家二线以上的互联网公司，不断总结完善和思考，写出一本完美的安卓面试书籍，大家支持我吗？目录1、okhttp工作的大致流程2、okhttp中的连接池3、参考连接1、okhttp工作的大致流程1.1、整体流程（1）、当我们通过OkhttpClient创立一个Call，并发起同步或者异步请求">
+<title>Android中okhttp原理详解-极度针对面试篇 - 送码网</title>
+<meta http-equiv="Expires" content="0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Cache-control" content="no-cache">
+<meta http-equiv="Cache" content="no-cache">
+<link rel="shortcut icon" href="https://www.songma.com/img/favicon.ico?t=0406083001597850293" type="image/x-icon">
+<link href="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/global.css" rel="stylesheet" type="text/css">
+<link href="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/basic.css" rel="stylesheet" type="text/css">
+<link href="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/index.css" rel="stylesheet" type="text/css">
+<script src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/hm.js"></script><script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/global.js"></script>
+<script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/basic.js"></script>
+<script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/jquery.min.js"></script>
+<script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/layer.js"></script><link rel="stylesheet" href="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/layer.css" id="layuicss-skinlayercss">
+<script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/index.js"></script>
+<script language="javascript">
+if(is_mobile()) {document.location.href= 'https://www.songma.com/m/news/txtlist_i28215v.html';}
+</script>
+<script src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/ueditor.parse.js"></script>   
+<script>uParse('.ntxt', {    rootPath: '../config/ueditor/'})</script>
+<meta name="mobile-agent" content="format=xhtml;url=https://www.songma.com/m/news/txtlist_i28215v.html">
+<link href="https://www.songma.com/m/news/txtlist_i28215v.html" rel="alternate" media="only screen and (max-width: 1000px)">
+<style id="chartsContainerHeight">
+.edui-chart-container { height:300px}
+.edui-chart-container { height:300px}</style><style id="list">
+.ntxt ol,.ntxt ul{margin:0;padding:0;}li{clear:both;}.ntxt .list-paddingleft-1{padding-left:0}
+.ntxt .list-paddingleft-2{padding-left:20px}
+.ntxt .list-paddingleft-3{padding-left:40px}
+.ntxt ol,.ntxt ul{margin:0;padding:0;}li{clear:both;}.ntxt .list-paddingleft-1{padding-left:0}
+.ntxt .list-paddingleft-2{padding-left:20px}
+.ntxt .list-paddingleft-3{padding-left:40px}</style></head>
+<body>
+<!--閬楃暀鏂囦欢--><span id="webhttp" style="display:none">https://www.songma.com/</span>
+<script language="javascript" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/header.js"></script>
+<input type="hidden" id="isSendAjaxUser" value="1">
+    <div class="header-sm">
+        <div class="header-sm-container header-sm-fixed">
+            <div class="header-nav">
+                <div class="search-fixed">
+                    <div class="ssflz">
+                        <div class="fenlei"><i class="icon icon-p-fenlei"></i>分类
+                        </div>
+						<div class="fenlei2"><i class="icont-close"></i><b id="w_a">商品</b>
+                    </div>
+                        <div class="fl search-input">
+                            <div>
+                                <input type="text" class="fl" id="search-text1" oninput="toptdowna()" onmouseup="toptdowna()" placeholder="请输入搜索内容" value="" data-isshow="1" data-where="1"></div>
+                        </div>
+                        <div class="sm-hy btn-green-linear btn-search fr" id="search_btn2"><i class="icon icon-p-search"></i></div>
+                        <div class="search-result">
+                        <div class="result-all" id="result-alla">
+                        </div>
+</div>
+						
+                        <div class="search-classify max-height-classify" style="display: none;"> 
+                            <dl class="list-box">
+                            <dt>产品中心<em></em></dt>
+														                            <dd data-catename="网站源码" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k4v.html" target="_blank">二开/独开/特色   <em>7411</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k6v.html" target="_blank">QQ非主流/图片   <em>1548</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k7v.html" target="_blank">电影/视频/音乐   <em>2227</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k8v.html" target="_blank">游戏/动漫/竞技   <em>2728</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k9v.html" target="_blank">聊天/交友/直播   <em>8615</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k10v.html" target="_blank">小说/文章/文学   <em>2615</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k11v.html" target="_blank">医院/女人/健康   <em>3119</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k12v.html" target="_blank">导航/网址/查询   <em>1883</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k13v.html" target="_blank">淘客/网店/商城   <em>2380</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k14v.html" target="_blank">门户/新闻/资讯   <em>3084</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k15v.html" target="_blank">论坛/社区/问答   <em>3411</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k16v.html" target="_blank">二手/B２B/分类   <em>6738</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k17v.html" target="_blank">软件/下载/电脑   <em>6796</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k18v.html" target="_blank">旅游/餐饮/票务   <em>4476</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k19v.html" target="_blank">房产/商铺/装修   <em>1162</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k20v.html" target="_blank">学校/教育/人才   <em>993</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k21v.html" target="_blank">财经/股票/金融   <em>635</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k22v.html" target="_blank">企业/公司/政府   <em>1551</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k23v.html" target="_blank">行业/办公/系统   <em>1600</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k24v.html" target="_blank">博客/个人/blog   <em>1778</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k25v.html" target="_blank">体育/运动/赛事   <em>483</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k26v.html" target="_blank">物流/快递/交通   <em>999</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k27v.html" target="_blank">域名/空间/建站   <em>1014</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k28v.html" target="_blank">汽车/二手/车行   <em>822</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k29v.html" target="_blank">Wap/微信/App   <em>1466</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>
+									  <div class="sec-list">
+									  									  
+									  <a href="https://www.songma.com/product/view157303.html" title="绿色房地产建筑装修、节能环保企业网站模板源码支持SEO静态后端" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0384032001567888563tp204-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="绿色房地产建筑装修、节能环保企业网站模板源码支持SEO静态后端" tit="绿色房地产建筑装修、节能环保企业网站模板源码支持SEO静态后端"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view44579.html" title="【商业版】化妆美容美白产品类网站织梦模板（带移动端）" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0868586001532139659tp45-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="【商业版】化妆美容美白产品类网站织梦模板（带移动端）" tit="【商业版】化妆美容美白产品类网站织梦模板（带移动端）"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view136391.html" title="可在线报名 大学学院职业学校建站系统网站源码881025 ASP+ACC" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0874258001559528293tp204-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="可在线报名 大学学院职业学校建站系统网站源码881025 ASP+ACC" tit="可在线报名 大学学院职业学校建站系统网站源码881025 ASP+ACC"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view57065.html" title="2018在线算命网站源码，宝宝起名网站源码，易经风水预测，占卜八字源码下载，带后端" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0382818001534405197tp1123-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="2018在线算命网站源码，宝宝起名网站源码，易经风水预测，占卜八字源码下载，带后端" tit="2018在线算命网站源码，宝宝起名网站源码，易经风水预测，占卜八字源码下载，带后端"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view136672.html" title="信转发文章+威客任务系统，全新自适应UI更新任务众包趣头条模式" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0635446001559650260tp204-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="信转发文章+威客任务系统，全新自适应UI更新任务众包趣头条模式" tit="信转发文章+威客任务系统，全新自适应UI更新任务众包趣头条模式"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view40607.html" title="GA积分商城 v2.0.9" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0981040001531619201tp364-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="GA积分商城 v2.0.9" tit="GA积分商城 v2.0.9"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j1v.html"><i class="icon icon-embed2"></i>网站源码</a></dd>
+								                            <dd data-catename="软件教程" data-cateid="3">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k42v.html" target="_blank">软件工具   <em>223</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k30v.html" target="_blank">社交推广   <em>366</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k31v.html" target="_blank">苹果APP   <em>64</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k32v.html" target="_blank">安卓APP   <em>61</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k33v.html" target="_blank">视频教程   <em>12254</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k36v.html" target="_blank">其他   <em>16541</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>
+									  <div class="sec-list">
+									  									  
+									  <a href="https://www.songma.com/product/view183212.html" title="刘坚强儿童简笔画大全 简笔画视频教程幼儿绘画 简笔画5000例精选" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0746309001596104297tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="刘坚强儿童简笔画大全 简笔画视频教程幼儿绘画 简笔画5000例精选" tit="刘坚强儿童简笔画大全 简笔画视频教程幼儿绘画 简笔画5000例精选"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view134728.html" title="响应式律师事务所网站织梦模板 HTML5个人律师网站源码" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0176782001559066072tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="响应式律师事务所网站织梦模板 HTML5个人律师网站源码" tit="响应式律师事务所网站织梦模板 HTML5个人律师网站源码"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view125109.html" title="服装制版视频教程自学缝纫工艺立裁剪裁绘画打板纸样教学服饰设计" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0158589001555328384tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="服装制版视频教程自学缝纫工艺立裁剪裁绘画打板纸样教学服饰设计" tit="服装制版视频教程自学缝纫工艺立裁剪裁绘画打板纸样教学服饰设计"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view108750.html" title="幼少儿童中国画基础入门教学视频教程课程 美术启蒙初绘画基础" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0172609001548431144tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="幼少儿童中国画基础入门教学视频教程课程 美术启蒙初绘画基础" tit="幼少儿童中国画基础入门教学视频教程课程 美术启蒙初绘画基础"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view125054.html" title="花艺视频零基础插花视频教程婚礼法式韩式花束包装视频开花店教程" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0161518001555312757tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="花艺视频零基础插花视频教程婚礼法式韩式花束包装视频开花店教程" tit="花艺视频零基础插花视频教程婚礼法式韩式花束包装视频开花店教程"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view141484.html" title="时尚资讯门户网站模板|女性生活娱乐新闻网站源码|php源码模板" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0234458001561418784tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="时尚资讯门户网站模板|女性生活娱乐新闻网站源码|php源码模板" tit="时尚资讯门户网站模板|女性生活娱乐新闻网站源码|php源码模板"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j2v.html"><i class="icon icon-arrow-left-copy"></i>软件教程</a></dd>
+								                            <dd data-catename="域名整站" data-cateid="4">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>
+									  <div class="sec-list">
+									  									  
+									  <a href="https://www.songma.com/product/view172743.html" title="www.tumi.net 整站出售 已有流量 双拼4位稀缺" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0177642001588443070tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="www.tumi.net 整站出售 已有流量 双拼4位稀缺" tit="www.tumi.net 整站出售 已有流量 双拼4位稀缺"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j43v.html"><i class="icon icon-display"></i>域名整站</a></dd>
+								
+							                            <dd data-catename="服务市场" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k3v.html">网站建设   <em>2</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k4v.html">APP开发   <em>3</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k5v.html">定制仿站   <em>1</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k6v.html">SEO优化   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k8v.html">推广外链   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k9v.html">安装迁移   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k10v.html">软件开发   <em>2</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k11v.html">游戏开发   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k12v.html">代办服务   <em>5</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>             
+									  <div class="sec-list">
+									  
+									  <a href="https://www.songma.com/serve/view42.html" title="QQ开发者,QQ互联,QQ开放平台,QQ公众号,腾讯内容开放平台,腾讯开放平台,主要用来H5网站，app授权登陆分享。" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0703655001595002707tp12128-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="QQ开发者,QQ互联,QQ开放平台,QQ公众号,腾讯内容开放平台,腾讯开放平台,主要用来H5网站，app授权登陆分享。" tit="QQ开发者,QQ互联,QQ开放平台,QQ公众号,腾讯内容开放平台,腾讯开放平台,主要用来H5网站，app授权登陆分享。"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view17.html" title="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0498368001586405420tp12128-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务" tit="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view43.html" title="专利申请,实用新型发明专利申请,代办计算机app软件著作权,外观专利申请,美术作品版权保护加急" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0956957001595002734tp12128-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="专利申请,实用新型发明专利申请,代办计算机app软件著作权,外观专利申请,美术作品版权保护加急" tit="专利申请,实用新型发明专利申请,代办计算机app软件著作权,外观专利申请,美术作品版权保护加急"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view29.html" title="网络文化经营许可证 代办协助办理 金石企服 签订合同" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0849579001589529982tp22083-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="网络文化经营许可证 代办协助办理 金石企服 签订合同" tit="网络文化经营许可证 代办协助办理 金石企服 签订合同"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view30.html" title="花生日记高佣联盟淘客app定制开发" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0888221001589788730tp9251-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="花生日记高佣联盟淘客app定制开发" tit="花生日记高佣联盟淘客app定制开发"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view44.html" title="多人视频相亲交友系统源码仿伊对相亲交友系统开发" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0220262001596001064tp9121-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="多人视频相亲交友系统源码仿伊对相亲交友系统开发" tit="多人视频相亲交友系统源码仿伊对相亲交友系统开发"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/serve/search_j2v.html"><i class="icon icon-p-tool"></i>服务市场</a></dd>
+								                            <dt>新闻资讯<em></em></dt>
+														                            <dd data-catename="" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k26v.html" target="_blank">windows <em>263</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k31v.html" target="_blank">Linux <em>973</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k27v.html" target="_blank">数据库 <em>590</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k28v.html" target="_blank">软件环境 <em>2076</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k32v.html" target="_blank">服务器应用 <em>11320</em> </a></p>
+                                        </div>
+										                                       
+                                    </div>
+									<div class="fl hot">
+									<p class="pic-title">热门推荐</p>             
+									<div class="sec-list">
+									
+									<a href="https://www.songma.com/news/txtlist_i26113v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="uwsgi+django+nginx 搭建部分总结" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="uwsgi+django+nginx 搭建部分总结">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i3981v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/lbsvmgvd4dh311.jpg" title="在Ubuntu14.04中如何安装Python3和切换py2和py3环境" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="在Ubuntu14.04中如何安装Python3和切换py2和py3环境">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i27775v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="vue spa应用加入ip访问统计功能（前台）" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="vue spa应用加入ip访问统计功能（前台）">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i1112v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="SQL语句基础入门" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="SQL语句基础入门">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i41431v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/zywkcdqla3q196.jpg" title="【职场提升】只要这4步，后勤岗位员工也能受重视" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="【职场提升】只要这4步，后勤岗位员工也能受重视">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i1787v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/vvkd4fvsp552900.jpg" title="java：（负载均衡）nginx的应使用配置" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="java：（负载均衡）nginx的应使用配置">             
+									</a>
+ 									
+									</div>         
+									</div>
+                                </div> <a href="https://www.songma.com/news/newslist_j21v.html"><i class="icon icon-cogs"></i>系统环境</a></dd>
+								                            <dd data-catename="" data-cateid="3">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k68v.html" target="_blank">CSS <em>829</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k72v.html" target="_blank">HTML <em>150</em> </a></p>
+                                        </div>
+										                                        <div class="fl">
+											
+                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k71v.html" target="_blank">JS <em>284</em> </a></p>
+                                        </div>
+										                                       
+                                    </div>
+									<div class="fl hot">
+									<p class="pic-title">热门推荐</p>             
+									<div class="sec-list">
+									
+									<a href="https://www.songma.com/news/txtlist_i4402v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/wwdpv0c0she670.jpg" title="黑客入门——json和json劫持" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="黑客入门——json和json劫持">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i25946v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/tpko022h340115.jpg" title="浏览器如何工作：引擎盖下的窥视" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="浏览器如何工作：引擎盖下的窥视">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i461v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/ar2mbcpseju4089.jpg" title="JS学习笔记之Js详情" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="JS学习笔记之Js详情">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i730v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/pu1lqrbiufa2014.jpg" title="js代码常见技巧总结" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="js代码常见技巧总结">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i1572v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/bnizwuuubo03264.jpg" title="假如通过看键盘区别程序员？" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="假如通过看键盘区别程序员？">             
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i3448v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/hla02oeelxz2111.jpg" title="css中被忽略却很好使用的选择器" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="css中被忽略却很好使用的选择器">             
+									</a>
+ 									
+									</div>         
+									</div>
+                                </div> <a href="https://www.songma.com/news/newslist_j67v.html"><i class="icon icon-p-sjyuansu"></i>网页前端</a></dd>
+								                        </dl>
+                        </div>
+						<div class="search-type1">
+							<dl class="list-box">
+                            <dd data-id="1" onclick="topsetya(1)">商品</dd>
+							<dd data-id="2" onclick="topsetya(2)">店铺</dd>
+							<dd data-id="3" onclick="topsetya(3)">资讯</dd>
+							</dl>
+						</div>
+                    </div>
+                </div>
+                <div class="ytfm hover-box nav-fixed"><a href="https://www.songma.com/product/" class="arrow">产品中心</a>
+                    <div class="nav-list hover-box green ">
+										 							<a href="https://www.songma.com/product/search_j1v.html"><i class="icon icon-embed2"></i><span>网站源码</span></a>
+																		<a href="https://www.songma.com/product/search_j2v.html"><i class="icon icon-arrow-left-copy"></i><span>软件教程</span></a>
+																		<a href="https://www.songma.com/product/search_j43v.html"><i class="icon icon-display"></i><span>域名整站</span></a>
+											<a href="https://www.songma.com/serve/search_j2v.html"><i class="icon icon-p-tool"></i><span>服务市场</span></a>
+				</div>
+                </div>
+                <div class="ytfm hover-box"><a href="https://www.songma.com/shop/">商家中心</a></div>
+                <div class="ytfm hover-box blue nav-fixed"><a href="https://www.songma.com/news/" class="arrow">
+                        新闻资讯
+                    </a>
+					                    <div class="nav-list blue">
+					 							<a href="https://www.songma.com/news/newslist_j21v.html"><i class="icon icon-cogs"></i><span>系统环境</span></a>
+																		<a href="https://www.songma.com/news/newslist_j67v.html"><i class="icon icon-p-sjyuansu"></i><span>网页前端</span></a>
+																</div>
+                </div>
+                <div class="ytfm hover-box"><a href="javascript:;" class="arrow"><span class="dot">
+                          &#8226;  &#8226;  &#8226;
+                    </span></a><div class="nav-list"><a href="https://www.songma.com/vipfuli" target="_blank"><i class="icon icon-p-activity"></i><span>福利</span></a><a href="https://www.songma.com/product/" target="_blank"><i class="icon icon-p-new"></i><span>每日最新</span></a><a href="https://www.songma.com/task/" target="_blank"><i class="icon icon-p-QQ"></i><span>任务大厅</span></a><a href="https://www.songma.com/vipfuli" target="_blank"><i class="icon icon-wrench"></i><span>免费工具</span></a><a href="https://www.songma.com/mt/" target="_blank"><i class="icon icon-p-prototype"></i><span>手机版</span></a></div></div>
+            </div>
+            <div class="container-sm">
+				                <div class="logo-sm fl"><a href="https://www.songma.com/"><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/logo.png" width="236" height="26" alt="logo">
+                        &nbsp;
+                    </a></div>
+				
+				<div class="header-user login fr" id="notlogin">
+					<p class="sm-hy">
+						<a href="javascript:void(0);" onclick="toptclogin()">登录</a></p><p class="sm-hy btn-green-linear"><a href="https://www.songma.com/reg/reg.php">注册</a></p>
+						</div>
+				
+                <div class="header-user info header-right fr" id="yeslogin" style="display:none">
+                    <div class="user-img"><a href="https://www.songma.com/user/"><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/undefined" id="topuimg" width="40" height="40" alt="ico"></a></div>
+                    <div class="user-info js-copy-id">
+                        <p>
+						<span id="yesuid" class="s1"></span>
+                        </p>
+                        <p class="clearfix"></p>
+                    </div>
+                    <div class="header-drop">
+                        <div class="user-header"> 
+							<span class="int-img v0"></span> 
+							<a href="https://www.songma.com/user/" target="_blank" class="user-name" id="yesuid"></a> 
+                            
+                            <div id="topurz">undefined</div>
+                            
+						</div>
+                        <div class="user-int"> 
+							<span class="fl"><a href="https://www.songma.com/user/userdj.php" id="topudj">undefined</a></span> 
+
+							<a href="https://www.songma.com/user/paylog.php" target="_blank" class="fr int-count">余额&nbsp;:&nbsp;<span id="topmoney">err0</span></a>
+							<a href="https://www.songma.com/user/jflog.php" target="_blank" class="fr int-count">积分&nbsp;:&nbsp;<span id="topjf">undefined</span></a>
+						</div>
+						                        <div class="user-vip"> 
+							<span class="fl vip-type">
+								<i class="icon-img vip11"></i>普通							</span> 
+							<span class="fl vip-count">0元/月</span>
+							<a href="https://www.songma.com/user/userdj.php" class="fl vip-text">会员商品享10折</a><a href="https://www.songma.com/user/userdj.php" class="fr" id="tdjxh1">开通VIP &#8250;</a>
+						</div>
+                                                <div class="user-vip"> 
+							<span class="fl vip-type">
+								<i class="icon-img vip21"></i>白金							</span> 
+							<span class="fl vip-count">100元/年</span>
+							<a href="https://www.songma.com/user/userdj.php" class="fl vip-text">会员商品享9.7折</a><a href="https://www.songma.com/user/userdj.php" class="fr" id="tdjxh2">开通VIP &#8250;</a>
+						</div>
+                                                <div class="user-vip"> 
+							<span class="fl vip-type">
+								<i class="icon-img vip31"></i>黄金							</span> 
+							<span class="fl vip-count">200元/年</span>
+							<a href="https://www.songma.com/user/userdj.php" class="fl vip-text">会员商品享9.5折</a><a href="https://www.songma.com/user/userdj.php" class="fr" id="tdjxh3">开通VIP &#8250;</a>
+						</div>
+                                                <div class="user-vip"> 
+							<span class="fl vip-type">
+								<i class="icon-img vip41"></i>钻石							</span> 
+							<span class="fl vip-count">500元/年</span>
+							<a href="https://www.songma.com/user/userdj.php" class="fl vip-text">会员商品享9折</a><a href="https://www.songma.com/user/userdj.php" class="fr" id="tdjxh4">开通VIP &#8250;</a>
+						</div>
+                        						
+                        <div class="user-nav"> 
+							<a href="https://www.songma.com/user/" class="fl" title="个人中心" target="_blank"><i class="icon icon-rengezhongxin"></i>个人中心</a> 
+							<a href="https://www.songma.com/user/order.php" class="fl" title="我的订单" target="_blank" rel="nofollow"><i class="icon icon-shourumingxi"></i>我的订单</a>
+							<a href="https://www.songma.com/user/pay.php" class="fl" title="用户充值" target="_blank" rel="nofollow"><i class="icon icon-credit-card"></i>用户充值</a>
+							<a href="https://www.songma.com/help/" class="fl" title="新手帮助" target="_blank"><i class="icon icon-shoucang"></i>新手帮助</a> 
+						</div>
+                        <div class="user-footer">
+							<a href="https://www.songma.com/user/" target="_blank" class="fl">帐号设置</a>
+							<a href="https://www.songma.com/user/un.php" class="fr" target="_blank" rel="nofollow">退出</a>
+						</div>
+                    </div>
+                    
+                </div>
+                <div class="messageSystem" id="messageSystem" style="display:none;">
+                    <ul class="messageSystem-model" onmouseover="topgetc();"><span class="messageSystem-icon icon icon-cart"></span><span class="messageSystem-txt">购物车</span><span class="messageSystem-base-info"><li class="messageSystem-num"><p id="topcarnum">undefined</p></li></span></ul><span class="message-base-info"><div class="messageSystem-after" id="topcar"><script>location.href='../reg/';</script></div></span>
+                    <input type="hidden" id="isSendAjaxInfo" value="1">
+                </div>
+                
+		<div class="header-upload hover-box header-right fr"><i class="icon icon-p-shangchuan"></i><a href="https://www.songma.com/user/productlx.php" target="_blank">
+        发布
+    </a></div>
+
+            </div>
+        </div>
+    </div><div class="index-sm">
+        <div class="container-sm">
+            <div class="ssfl">
+                <div class="ssflz">
+                    <div class="fenlei"><i class="icon icon-p-fenlei"></i>分类
+                    </div>
+					<form name="topf1" method="post" id="w_submit" style="display:none;">
+					<input name="topt" id="w_text" value="">
+					</form>
+					 <div class="fenlei1"><i class="icont-close"></i><b id="w_show">商品</b>
+                    </div>
+                    <div class="fl search-input">
+                        <div>
+                            <input type="text" id="search-text" oninput="toptdown()" onmouseup="toptdown()" class="fl" name="topt" autocomplete="off" disableautocomplete="" placeholder="请输入要搜索的内容" value="" data-isshow="1" data-where="1"></div>
+							<input type="hidden" id="w_search" value="1">
+                    </div>
+                    <div class="sm-hy btn-green-linear btn-search fr" id="search_btn"><i class="icon icon-p-search"></i></div>
+                    <div class="search-result" id="w_search_result">
+                        <div class="result-all" id="result-all">
+                        </div>
+                    </div>
+					<div class="search-type">
+                        <dl class="list-box">
+                            <dd data-id="1" onclick="topsety(1)">商品</dd>
+							<dd data-id="2" onclick="topsety(2)">店铺</dd>
+							<dd data-id="3" onclick="topsety(3)">资讯</dd>
+                        </dl>
+                    </div>
+                    <div class="search-classify" style="display: none;">
+                        <dl class="list-box">
+                            <dt>产品中心<em></em></dt>
+														                            <dd data-catename="网站源码" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k4v.html">二开/独开/特色   <em>7411</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k6v.html">QQ非主流/图片   <em>1548</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k7v.html">电影/视频/音乐   <em>2227</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k8v.html">游戏/动漫/竞技   <em>2728</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k9v.html">聊天/交友/直播   <em>8615</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k10v.html">小说/文章/文学   <em>2615</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k11v.html">医院/女人/健康   <em>3119</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k12v.html">导航/网址/查询   <em>1883</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k13v.html">淘客/网店/商城   <em>2380</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k14v.html">门户/新闻/资讯   <em>3084</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k15v.html">论坛/社区/问答   <em>3411</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k16v.html">二手/B２B/分类   <em>6738</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k17v.html">软件/下载/电脑   <em>6796</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k18v.html">旅游/餐饮/票务   <em>4476</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k19v.html">房产/商铺/装修   <em>1162</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k20v.html">学校/教育/人才   <em>993</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k21v.html">财经/股票/金融   <em>635</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k22v.html">企业/公司/政府   <em>1551</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k23v.html">行业/办公/系统   <em>1600</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k24v.html">博客/个人/blog   <em>1778</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k25v.html">体育/运动/赛事   <em>483</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k26v.html">物流/快递/交通   <em>999</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k27v.html">域名/空间/建站   <em>1014</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k28v.html">汽车/二手/车行   <em>822</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j1v_k29v.html">Wap/微信/App   <em>1466</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>             
+									  <div class="sec-list">
+									  
+									  <a href="https://www.songma.com/product/view163018.html" title="虚拟卡商城 2.6.9 开源版" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0093315001578361823tp10701-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="虚拟卡商城 2.6.9 开源版" tit="虚拟卡商城 2.6.9 开源版"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view173322.html" title="仿199云支付 免签支付网站源码开源版" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0935136001590647943tp13907-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="仿199云支付 免签支付网站源码开源版" tit="仿199云支付 免签支付网站源码开源版"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view52260.html" title="【传奇3】传奇3单机版 3G1.45钓鱼岛一键服务端 最新42魔法钻石版 天宫桃园宝象国" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0588788001533644847tp368-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="【传奇3】传奇3单机版 3G1.45钓鱼岛一键服务端 最新42魔法钻石版 天宫桃园宝象国" tit="【传奇3】传奇3单机版 3G1.45钓鱼岛一键服务端 最新42魔法钻石版 天宫桃园宝象国"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view90871.html" title="织梦dedecms成人高考自考资料文章资讯网站模板（带手机手机端）" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0879551001543063635tp1416-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="织梦dedecms成人高考自考资料文章资讯网站模板（带手机手机端）" tit="织梦dedecms成人高考自考资料文章资讯网站模板（带手机手机端）"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view21916.html" title="简洁大气营销型电子科技企业模板dede织梦源码_" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0275179001527295702tp30-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="简洁大气营销型电子科技企业模板dede织梦源码_" tit="简洁大气营销型电子科技企业模板dede织梦源码_"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view48110.html" title="响应式零食日化商品织梦商城模板带自适应购物车在线交易商业模板" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0028872001532866015tp7-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="响应式零食日化商品织梦商城模板带自适应购物车在线交易商业模板" tit="响应式零食日化商品织梦商城模板带自适应购物车在线交易商业模板"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j1v.html"><i class="icon icon-embed2"></i>网站源码</a></dd>
+								                            <dd data-catename="软件教程" data-cateid="3">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k42v.html">软件工具   <em>223</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k30v.html">社交推广   <em>366</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k31v.html">苹果APP   <em>64</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k32v.html">安卓APP   <em>61</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k33v.html">视频教程   <em>12254</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/product/search_j2v_k36v.html">其他   <em>16541</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>             
+									  <div class="sec-list">
+									  
+									  <a href="https://www.songma.com/product/view185560.html" title="美工自学课程PS教程零基础小白网课新手入门全套教学视频修图抠图" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0762488001596849546tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="美工自学课程PS教程零基础小白网课新手入门全套教学视频修图抠图" tit="美工自学课程PS教程零基础小白网课新手入门全套教学视频修图抠图"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view180846.html" title="风水视频教程易学周易经面相八字起名零基础入门自学全套在线课程" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0899410001594848877tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="风水视频教程易学周易经面相八字起名零基础入门自学全套在线课程" tit="风水视频教程易学周易经面相八字起名零基础入门自学全套在线课程"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view182666.html" title="手机摄影教程视频/全套摄影入门自学/手机拍照技巧人像生活照教学" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0802422001595760906tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="手机摄影教程视频/全套摄影入门自学/手机拍照技巧人像生活照教学" tit="手机摄影教程视频/全套摄影入门自学/手机拍照技巧人像生活照教学"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view177237.html" title="PHP二次开发 程序定制 接口对接 开发网站 TP 二次开发 源码修改" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0993603001591950384tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="PHP二次开发 程序定制 接口对接 开发网站 TP 二次开发 源码修改" tit="PHP二次开发 程序定制 接口对接 开发网站 TP 二次开发 源码修改"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view153719.html" title="前端切图静态dw大学生个人网页成品设计制作代做html页面模板源码" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0954847001565747512tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="前端切图静态dw大学生个人网页成品设计制作代做html页面模板源码" tit="前端切图静态dw大学生个人网页成品设计制作代做html页面模板源码"></a>
+									    									  
+									  <a href="https://www.songma.com/product/view171540.html" title="ecshop二次开发视频教程 ecshop仿站 模板页面修改 企业商城网站" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0765327001587669697tp14607-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="ecshop二次开发视频教程 ecshop仿站 模板页面修改 企业商城网站" tit="ecshop二次开发视频教程 ecshop仿站 模板页面修改 企业商城网站"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j2v.html"><i class="icon icon-arrow-left-copy"></i>软件教程</a></dd>
+								                            <dd data-catename="域名整站" data-cateid="4">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>             
+									  <div class="sec-list">
+									  
+									  <a href="https://www.songma.com/product/view172743.html" title="www.tumi.net 整站出售 已有流量 双拼4位稀缺" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0177642001588443070tp80-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="www.tumi.net 整站出售 已有流量 双拼4位稀缺" tit="www.tumi.net 整站出售 已有流量 双拼4位稀缺"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/product/search_j43v.html"><i class="icon icon-display"></i>域名整站</a></dd>
+								
+							                            <dd data-catename="服务市场" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k3v.html">网站建设   <em>2</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k4v.html">APP开发   <em>3</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k5v.html">定制仿站   <em>1</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k6v.html">SEO优化   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k8v.html">推广外链   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k9v.html">安装迁移   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k10v.html">软件开发   <em>2</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k11v.html">游戏开发   <em>0</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/serve/search_j2v_k12v.html">代办服务   <em>5</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									  <div class="fl hot">             
+									  <p class="pic-title">热门推荐</p>             
+									  <div class="sec-list">
+									  
+									  <a href="https://www.songma.com/serve/view33.html" title="服务器环境排查及顾客安装源码遇到问题排除" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/none180x180.gif" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="服务器环境排查及顾客安装源码遇到问题排除" tit="服务器环境排查及顾客安装源码遇到问题排除"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view29.html" title="网络文化经营许可证 代办协助办理 金石企服 签订合同" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0849579001589529982tp22083-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="网络文化经营许可证 代办协助办理 金石企服 签订合同" tit="网络文化经营许可证 代办协助办理 金石企服 签订合同"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view15.html" title="全新数字货币合约交易所 社区跟单  运营级别区块链合约交易数字货币合约机器人交易所源码" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0908232001586322519tp13292-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="全新数字货币合约交易所 社区跟单  运营级别区块链合约交易数字货币合约机器人交易所源码" tit="全新数字货币合约交易所 社区跟单  运营级别区块链合约交易数字货币合约机器人交易所源码"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view17.html" title="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0498368001586405420tp12128-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务" tit="代办计算机软件著作权，APP软件著作权，包撰写代写包下证，著作权申请，软著申请，软件著作权申请，加急，申请软著，商标注册，办理营业执照，专业靠谱一条龙服务"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view44.html" title="多人视频相亲交友系统源码仿伊对相亲交友系统开发" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0220262001596001064tp9121-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="多人视频相亲交友系统源码仿伊对相亲交友系统开发" tit="多人视频相亲交友系统源码仿伊对相亲交友系统开发"></a>
+									    									  
+									  <a href="https://www.songma.com/serve/view47.html" title="三端互通一对一直播系统源码一对一社交系统开发" target="_blank">                     
+									  <img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0693684001596597014tp9121-1.jpg" onerror="this.src=&#39;https://www.songma.com/img/none180x180.gif&#39;" alt="三端互通一对一直播系统源码一对一社交系统开发" tit="三端互通一对一直播系统源码一对一社交系统开发"></a>
+									    									  </div>
+									  </div>
+                                </div> <a href="https://www.songma.com/serve/search_j2v.html"><i class="icon icon-p-tool"></i>服务市场</a></dd>
+								
+<dt>新闻资讯<em></em></dt>
+														                            <dd data-catename="" data-cateid="2">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k26v.html">windows <em>263</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k31v.html">Linux <em>973</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k27v.html">数据库 <em>590</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k28v.html">软件环境 <em>2076</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j21v_k32v.html">服务器应用 <em>11320</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									<div class="fl hot">             
+									<p class="pic-title">热门推荐</p>             
+									<div class="sec-list">
+									
+									<a href="https://www.songma.com/news/txtlist_i28191v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/sg4je4dhx5e163.gif" title="小程序JS动态修改样式" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="小程序JS动态修改样式">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i22584v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/ydtw2q3wrqv868.jpg" title="CentOS下Redis的安装" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="CentOS下Redis的安装">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i62456v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="表单和v-model" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="表单和v-model">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i62883v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="我与Linux" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="我与Linux">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i939v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/mesbdm23qkg2711.jpg" title="Nginx基础，反向代理商，负载均衡配置，仅此一篇文章就够了" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="Nginx基础，反向代理商，负载均衡配置，仅此一篇文章就够了">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i37605v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="8种常被忽视的SQL错误用法" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="8种常被忽视的SQL错误用法">                 
+									</a>
+ 	
+									</div>         
+									</div>
+                                </div> <a href="https://www.songma.com/news/newslist_j21v.html"><i class="icon icon-cogs"></i>系统环境</a></dd>
+								                            <dd data-catename="" data-cateid="3">
+                                <div class="list-sec list-11">
+                                    <div class="fl" style="width: 320px">
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k68v.html">CSS <em>829</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k72v.html">HTML <em>150</em></a> </p>
+                                        </div>
+										                                        <div class="fl">
+											                                            <p class="sec-title short"> <a href="https://www.songma.com/news/newslist_j67v_k71v.html">JS <em>284</em></a> </p>
+                                        </div>
+										                                       
+                                    </div>
+									<div class="fl hot">             
+									<p class="pic-title">热门推荐</p>             
+									<div class="sec-list">
+									
+									<a href="https://www.songma.com/news/txtlist_i829v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/nopic.gif" title="HTML5基础知识（1）" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="HTML5基础知识（1）">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i1516v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/uqn1wnkwjmo2655.jpg" title="除了人脸还有啥，视觉AI“掘金”之路在何方？" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="除了人脸还有啥，视觉AI“掘金”之路在何方？">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i447v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/201otoxd14i4061.jpg" title="js游戏开发，扑克牌游戏开发，听我说，一看就会" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="js游戏开发，扑克牌游戏开发，听我说，一看就会">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i464v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/izjnusz4tn14099.gif" title="js函数——异常解决" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="js函数——异常解决">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i23065v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/5eaa51uzsh5206.jpg" title="PHP学习 Thinkphp框架(1)——关于Thinkphp结构目录和数据库操作" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="PHP学习 Thinkphp框架(1)——关于Thinkphp结构目录和数据库操作">                 
+									</a>
+ 									
+									<a href="https://www.songma.com/news/txtlist_i3336v.html" target="_blank">
+									<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/zrl0hxh1iov1326.jpg" title="初到科尔马赵薇舒淇上演偶像剧式完美错过，又双双变身迷路姐妹花" onerror="this.src=&#39;/img/nopic.gif&#39;" alt="初到科尔马赵薇舒淇上演偶像剧式完美错过，又双双变身迷路姐妹花">                 
+									</a>
+ 	
+									</div>         
+									</div>
+                                </div> <a href="https://www.songma.com/news/newslist_j67v.html"><i class="icon icon-p-sjyuansu"></i>网页前端</a></dd>
+								                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="rmss"><span>热门搜索 :</span>
+			
+			 			 			  <a href="https://www.songma.com/product/search_j1v_e1_13v.html" target="_blank">WordPress</a>
+			  			 			  <a href="https://www.songma.com/product/search_j1v_e1_4v.html" target="_blank">织梦</a>
+			  			 			  <a href="https://www.songma.com/product/search_sxvPStbnZzfg%7Ccv.html" target="_blank">企业官网</a>
+			  			 			  <a href="https://www.songma.com/product/search_s0KHLtQ%7Cc%7Ccv_j-1v_k-1v_m-1v_i-1v_l-1v_bv_cv.html" target="_blank">小说源码</a>
+			  			 			  <a href="https://www.songma.com/product/search_sZGlzY3V6v.html" target="_blank">Discuz</a>
+			  			</div>
+			<div class="guanggao">
+    <div class="gg"></div>
+    <div class="item_coupon_box">
+      <div class="item_coupon_bg"></div>
+      <div class="item_coupon"><a href="https://www.songma.com/go/go.php?ali1" target="_blank" rel="nofollow">阿里云</a></div>
+      <div class="huodong_tg"></div>
+      <div class="huodong"><a href="https://www.songma.com/go/go.php?hd1" target="_blank" rel="nofollow">商标</a></div>
+      <div class="item_price"><a href="https://www.songma.com/go/go.php?ali" target="_blank" rel="nofollow"><span>领取2000<i>￥</i>代金券</span></a></div>
+      
+    </div>
+</div>
+        </div>
+    </div>
+      
+<div class="yjcode">
+
+  
+ <div class="dqwz">
+ <ul class="u1">
+ <li class="l1">
+ 当前位置：<a href="https://www.songma.com/">首页</a> &gt; <a href="https://www.songma.com/news/">资讯</a> &gt; <a href="https://www.songma.com/news/newslist_j21v.html">系统环境</a>
+  &gt; <a href="https://www.songma.com/news/newslist_j21v_k32v.html">服务器应用</a> </li>
+ </ul>
+ </div>
+
+<div class="newsmain">
+ <!--左B-->
+ <div class="left">
+ <h1 class="titcap fontyh"><a name="tit">Android中okhttp原理详解-极度针对面试篇</a></h1>
+ <ul class="u1">
+ <li class="l1"><i class="icon icon-p-shijian"></i>时间：2018-12-16 22:32 <i class="icon icon-rengezhongxin"></i>作者：<a href="https://www.songma.com/u/591bf64bc29d">小红军storm</a> <i class="icon icon-servicehaiwaizhiyou1"></i>来源：<a href="https://www.songma.com/news/txtlist_i28215v.html#" class="blue" target="_blank">小红军storm</a> <i class="icon icon-fire"></i>阅读：9629</li>
+<li class="l2" onmouseover="objdis(1,&#39;newm&#39;)" onmouseout="objdis(0,&#39;newm&#39;)">扫一扫，手机访问</li>
+ </ul>
+ <div id="newm" style="display:none;"><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/getqr.php"></div>
+ <div class="zytad"></div>
+ <div class="zhaiy "><strong>摘要：</strong>后期我会面试50家二线以上的互联网公司，不断总结完善和思考，写出一本完美的安卓面试书籍，大家支持我吗？目录1、okhttp工作的大致流程2、okhttp中的连接池3、参考连接1、okhttp工作的大致流程1.1、整体流程（1）、当我们通过OkhttpClient创立一个Call，并发起同步或者异步请求</div>
+ <div class="ntxt"><p>后期我会面试50家二线以上的互联网公司，不断总结完善和思考，写出一本完美的安卓面试书籍，大家支持我吗？</p><h1>目录</h1><p>1、okhttp工作的大致流程<br>2、okhttp中的连接池<br>3、参考连接</p><h1>1、okhttp工作的大致流程</h1><h3>1.1、整体流程</h3><p>（1）、当我们通过OkhttpClient创立一个Call，并发起同步或者异步请求时；<br>（2）、okhttp会通过Dispatcher对我们所有的RealCall（Call的具体实现类）进行统一管理，并通过execute()及enqueue()方法对同步或者异步请求进行解决；<br>（3）、execute()及enqueue()这两个方法会最终调用RealCall中的getResponseWithInterceptorChain()方法，从阻拦器链中获取返回结果；<br>（4）、阻拦器链中，依次通过RetryAndFollowUpInterceptor（重定向阻拦器）、BridgeInterceptor（桥接阻拦器）、CacheInterceptor（缓存阻拦器）、ConnectInterceptor（连接阻拦器）、CallServerInterceptor（网络阻拦器）对请求依次解决，与服务的建立连接后，获取返回数据，再经过上述阻拦器依次解决后，最后将结果返回给调用方。<br>提供两张图便于了解和记忆：</p><br><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/owucnovbvfh131.png">okhttp整体流程1<img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/srqz3gh2e1u132.png">okhttp整体流程2<br><p>这张图只画出了请求流程，没有数据返回流程，后期会解决。</p><h3>1.2、各大阻拦器的原了解析</h3><h5>1.2.1、RetryAndFollowUpInterceptor：负责重定向</h5><p>构建一个StreamAllocation对象，而后调用下一个阻拦器获取结果，从返回结果中获取重定向的request，假如重定向的request不为空的话，并且不超过重定向最大次数的话就进行重定向，否则返回结果。注意：这里是通过一个while（true）的循环完成下一轮的重定向请求。</p><p>（1）、StreamAllocation为什么在第一个阻拦器中就进行创立？<br>???????便于取消请求以及出错释放资源。<br>（2）、StreamAllocation的作用是什么？<br>???????StreamAllocation负责统筹管理Connection、Stream、Call三个实体类，具体就是为一个Call（Realcall），寻觅（ findConnection() ）一个Connection（RealConnection），获取一个Stream（HttpCode）。</p><h5>1.2.2、BridgeInterceptor</h5><p>负责将原始Requset转换给发送给服务端的Request以及将Response转化成对调用方友好的Response，具体就是对request增加Content-Type、Content-Length、Connection、Accept-Encoding等请求头以及对返回结果进行解压等。</p><h5>1.2.3、CacheInterceptor</h5><p>CacheInterceptor：负责读取缓存以及升级缓存。<br>在请求阶段：</p><ol><li>读取候选缓存cacheCandidate；</li><li>根据originOequest和cacheresponse创立缓存策略CacheStrategy；</li><li>根据缓存策略，来决定能否使用网络或者者使用缓存或者者返回错误。<br>具体的的缓存策略就是http的缓存策略，详见下图：<br>在结果返回阶段：<br>负责将网络结果进行缓存（使用于DiskLruCache）。</li></ol><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/qtghpvj24lq133.png">okhttp&amp;http缓存策略<p>强制缓存：当用户端第一次请求数据是，服务端返回了缓存的过期时间（Expires与Cache-Control），没有过期即可以继续使用缓存，否则则不适用，无需再向服务端讯问。<br>比照缓存：当用户端第一次请求数据时，服务端会将缓存标识（Etag/If-None-Match与Last-Modified/If-Modified-Since）与数据一起返回给用户端，用户端将两者都备份到缓存中 ，再次请求数据时，用户端将上次备份的缓存<br>标识发送给服务端，服务端根据缓存标识进行判断，假如返回304，则表示缓存可用，假如返回200，标识缓存不可用，使用最新返回的数据。</p><p>ETag是用资源标识码标识资源能否被修改，Last-Modified是用时间戳标识资源能否被修改。ETag优先级高于Last-Modified。</p><h5>1.2.4、ConnectInterceptor：负责与服务器建立连接</h5><p>使用StreamAllocation.newStream来和服务端建立连接，并返回输入输出流（HttpCodec），实际上是通过StreamAllocation中的findConnection寻觅一个可用的Connection，而后调用Connection的connect方法，使用socket与服务端建立连接。</p><h5>1.2.5、CallServerInterceptor：负责从服务器读取响应的数据</h5><p>主要的工作就是把请求的Request写入到服务端，而后从服务端读取Response。<br>（1）、写入请求头<br>（2）、写入请求体<br>（3）、读取响应头<br>（4）、读取响应体</p><h1>2、连接池原理</h1><p>因为HTTP是基于TCP，TCP连接时需要经过三次握手，为了加快网络访问速度，我们可以Reuqst的header中将Connection设置为keepalive来复用连接。</p><p>Okhttp支持5个并发KeepAlive，默认链路生命为5分钟(链路空闲后，保持存活的时间)，连接池有ConectionPool实现，对连接进行回收和管理。</p><h3>2.1、连接池的清除</h3><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/ke3geeq3ir0134.png">连接池清除1<br><p>在ConectionPool中有一个异步线程去清除连接池中的连接，首先通过cleanup方法执行清除，而后等待clean返回的时间后，再次进行清除，以此循环，持续清除。</p><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/xgmv4nn01nz135.png">连接池原理2<p>1、首先统计空闲连接数量；<br>2、而后通过for循环查找最长空闲时间的连接以及对应空闲时长；<br>3、而后判断这个最长空闲时间的连接能否超出最大空闲连接数或者者或者者超过最大空闲时间，满足其一则清理最长空闲的连接。假如不满足清除条件，则返回一个对应等待时间。<br>这个对应等待的时间又分二种情况：<br>1 有空闲连接：则返回：keepAliveDurationNs-longestIdleDurationNs;<br>2 没有空闲的连接，则返回：keepAliveDurationNs<br>注意：清理一个空闲连接后，会返回0，再次立即开始清除。</p><p>如何统计空闲连接呢？</p><br><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/jthbnuthrqh136.png">统计空闲连接<br><p>StreamAllocation创立一个Connection后会将自己增加到Connection的connection.allocations列表中，数据读取完毕之后，会将自己从Connection的connection.allocations中移除，所以判读一个Connection能否是空闲连接可以采用引用计数法，判断connection.allocations列表中能否有StreamAllocation，假如没有就是空闲连接，否则不是。</p><h1>3、参考链接</h1><p>由于本文是极度针对面试的，所以未解释过多名词和粘贴过多代码，假如不明白其中原理，可以参考下面两篇链接：<br>3.1、https://www.jianshu.com/p/6166d28983a2<br>3.2、https://juejin.im/post/5a704ed05188255a8817f4c9#heading-15</p>                          <!-- 如果是付费文章，未购买，则显示购买按钮 -->    <!-- 连载目录项 -->    <!-- 如果是付费文章 -->      <!-- 如果是付费连载，已购买，且作者允许赞赏，则显示付费信息和赞赏 --></div>
+  
+ <!--评论B-->
+  <a name="pj"></a>
+ <div class="pinlun fontyh">
+  <ul class="plu1">
+  <li class="l1"><strong>全部评论</strong>(0)</li><li class="l2"></li>
+  </ul>
+  <form name="f1" method="post" target="_blank" onsubmit="return newspj()">
+  <input type="hidden" value="1544970748n364" name="bh">
+  <ul class="plu0">
+  <li class="l1"><textarea id="pjt" name="pjt"></textarea></li>
+  <li class="l3">[<a href="https://www.songma.com/news/pjlist_i28215v.html" target="_blank">展开所有评论</a>]</li>
+  <li class="l2"><input type="submit" value="发表评论"></li>
+  </ul>
+  </form>
+    
+   </div>
+ <!--评论E-->
+ 
+ <div class="nxg">
+ 上一篇：<a href="https://www.songma.com/news/txtlist_i28216v.html">【Android Drawable系列】- Shape在代码中的使用GradientDrawable</a><br>
+ 下一篇：<a href="https://www.songma.com/news/txtlist_i28214v.html">Picasso加载本地文件不显示问题解决</a> </div>
+ <div class="lad"><div class="ad1"><script type="text/javascript" src="https://t.syouhui.com/bwostcofx.js"></script></div></div>
+ <div class="otherxg">
+ <strong>最新发布的资讯信息</strong><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64463v.html" class="g_ac0">树莓派安装TensorFlow</a><span class="hui">(2020-04-24 21:11)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64462v.html" class="g_ac0">防面试-SD_WebImage</a><span class="hui">(2020-04-24 21:11)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64461v.html" class="g_ac0">推荐一款视频控件xgplayer</a><span class="hui">(2020-04-24 21:11)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64460v.html" class="g_ac0">PostgreSQL 源码解读（27）- 查询语句#12（查询优化-上拉子链接#2）</a><span class="hui">(2020-04-24 21:11)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64457v.html" class="g_ac0">如何轻松学习JavaScript？</a><span class="hui">(2020-04-24 21:10)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64456v.html" class="g_ac0">【源码剖析】Launcher 8.0 源码 (12) --- Launcher 启动流程 第五步之计算桌面各布局细节参数</a><span class="hui">(2020-04-24 21:10)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64455v.html" class="g_ac0">前台碰撞室之console.log与文本字符</a><span class="hui">(2020-04-24 21:10)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64454v.html" class="g_ac0">好用的Middleware实现</a><span class="hui">(2020-04-24 21:10)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64453v.html" class="g_ac0">前台面试每日 3+1 —— 第373天</a><span class="hui">(2020-04-24 21:10)</span><br>
+  【系统环境|服务器应用】<a href="https://www.songma.com/news/txtlist_i64452v.html" class="g_ac0">绍圣--kafka之生产者（五）</a><span class="hui">(2020-04-24 21:10)</span><br>
+  </div>
+ </div>
+ <!--左E-->
+ 
+ <!--右B-->
+ <div class="right">
+   
+       <div class="wzuser">
+   <div class="wzuserh">
+   <div class="user-wz">
+    <div class="user-wz-head">
+     <a target="_blank" href="https://www.songma.com/my/view364.html" class="user-wz-avatar"><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/shop.jpg" alt="蜂鸟科技" onerror="this.src=&#39;https://www.songma.com/user/img/nopic.gif&#39;"></a> 
+     <div class="user-wz-name">
+      <a href="https://www.songma.com/my/view364.html" target="_blank">蜂鸟科技</a> 
+      <div class="userwzdp">
+       <div class="left-arrow userwzdp-btn" style="cursor: pointer;" onclick="window.location=&#39;https://www.songma.com/shop/view364.html&#39;;">
+        
+        <i class="icon icon-jiahao" style="font-size: 10px; color: rgb(255, 255, 255);"></i>
+        <span>店铺</span>
+       </div>
+      </div>
+     </div>
+    </div> 
+    <ul class="user-wz-shop-list">
+            <li class="user-wz-shop-item"><a href="https://www.songma.com/product/view40471.html" target="_blank">织梦微信分享插件，织梦分享微信带...</a></li>
+           <li class="user-wz-shop-item"><a href="https://www.songma.com/product/view40486.html" target="_blank">最新D58站群系统,2018年6月d58目录...</a></li>
+           <li class="user-wz-shop-item"><a href="https://www.songma.com/product/view40570.html" target="_blank">24小时全自动在线要饭系统，免签约...</a></li>
+           <li class="user-wz-shop-item"><a href="https://www.songma.com/product/view39970.html" target="_blank">Lay-ui-admin后端管理模板完全由la...</a></li>
+           <li class="user-wz-shop-item"><a href="https://www.songma.com/product/view40274.html" target="_blank">个人自动发卡密自动发货平台网站源...</a></li>
+          </ul>
+   </div>
+  </div></div>
+   
+ <div class="adf"><div class="ad1"><script type="text/javascript" src="https://t.syouhui.com/faswzswzj.js"></script></div></div>
+ <div class="wxsp">
+<div class="wxspt">
+   <div class="wzsp-head">
+    推荐商品
+   </div> 
+   <ul class="bui-box smpic-list">
+     
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view41465.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="暴利项目 微信码子生成器和安卓版e4a源码" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0413413001531786939tp365-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥20.00</span></i>
+      </div> <p>暴利项目 微信码子生成器和安卓版e4a源码</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view47420.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="2017最新淘客带内部优惠券系统+淘宝客带手机WAP可经营版" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0929832001532731426tp7-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥26.00</span></i>
+      </div> <p>2017最新淘客带内部优惠券系统+淘宝客带手机WAP可经营版</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view39074.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="destoon7.0农业网站源码 三农b2b好模板 DT7绿色门户招商网站源码" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0451854001531202436tp301-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥266.00</span></i>
+      </div> <p>destoon7.0农业网站源码 三农b2b好模板 DT7绿色门户招商网站源码</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view82844.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="吊车,小吊车,小型吊车-嘉兴吊车网织梦源码" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0293906001539178216tp1413-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥40.00</span></i>
+      </div> <p>吊车,小吊车,小型吊车-嘉兴吊车网织梦源码</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view87304.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="仿Bitcoin86源码区块链资讯网站模板+数据+手机版" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0932081001541338995tp1415-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥300.00</span></i>
+      </div> <p>仿Bitcoin86源码区块链资讯网站模板+数据+手机版</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view147436.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="多功能客服公众号/小程序一条龙搭建/访客对话/多开/绑定客服/反向联络用户/自动应答" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0988128001563590433tp204-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥260.00</span></i>
+      </div> <p>多功能客服公众号/小程序一条龙搭建/访客对话/多开/绑定客服/反向联络用户/自动应答</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view129804.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="驾考在线答题系统网站源码Thinkphp3.2 手机版驾考宝典多题库" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0191674001557019413tp204-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥46.00</span></i>
+      </div> <p>驾考在线答题系统网站源码Thinkphp3.2 手机版驾考宝典多题库</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view110161.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="银行政府事业监督管理委员协会官方ASP网站程序源码带会员手机版" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0987728001548839588tp204-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥260.00</span></i>
+      </div> <p>银行政府事业监督管理委员协会官方ASP网站程序源码带会员手机版</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view25803.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="dede织梦响应式茶叶茶道类网站模板自适应移动设施" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0871699001527731905tp45-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥20.00</span></i>
+      </div> <p>dede织梦响应式茶叶茶道类网站模板自适应移动设施</p></a></li>
+      
+    <li class="bui-left smpic-item"><a href="https://www.songma.com/product/view11014.html" target="_blank" class="link">
+      <div class="wzsp-pic smpic-img">
+       <img alt="经营中的地方门户（含数据）" src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/0784028001525399906tp12-1.jpg" lazy="loaded"> 
+       <i class="wzsp-tag"><span>￥600.00</span></i>
+      </div> <p>经营中的地方门户（含数据）</p></a></li>
+     
+   </ul>
+  </div> </div>
+ <div class="hotnew">
+ <ul class="u1 fontyh">
+ <li class="l1">资讯排行榜</li>
+ <li class="l2"><a href="https://www.songma.com/news/">更多&gt;&gt;</a></li>
+ </ul>
+ <ul class="u2">
+  <li class="l1"><span class="s1">1</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i21633v.html" title="程序媛眼中的程序猿原来是这样子的！">程序媛眼中的程序猿原来是这样子的！</a></li>
+  <li class="l1"><span class="s2">2</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i24822v.html" title="紧急整理了 20 道 Spring Boot 面试题，我经常拿来面试别人！">紧急整理了 20 道 Spring Boot 面试题，我经</a></li>
+  <li class="l1"><span class="s3">3</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i1260v.html" title="斗鱼主播“祖祖小姨妈”下海">斗鱼主播“祖祖小姨妈”下海</a></li>
+  <li class="l1"><span class="s4">4</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i28505v.html" title="深入JVM内核5 GC参数">深入JVM内核5 GC参数</a></li>
+  <li class="l1"><span class="s5">5</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i2498v.html" title="HTML5(H5)常使用的十大前台框架（一）">HTML5(H5)常使用的十大前台框架（一）</a></li>
+  <li class="l1"><span class="s6">6</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i28215v.html" title="Android中okhttp原理详解-极度针对面试篇">Android中okhttp原理详解-极度针对面试篇</a></li>
+  <li class="l1"><span class="s7">7</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i23765v.html" title="动漫聚选最新宅新闻 2018.09.26「周三」">动漫聚选最新宅新闻 2018.09.26「周三」</a></li>
+  <li class="l1"><span class="s8">8</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i24704v.html" title="传奇单机架设，IIS安装网站架设，登录器简单配置教程图文教程">传奇单机架设，IIS安装网站架设，登录器简单</a></li>
+  <li class="l1"><span class="s9">9</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i1767v.html" title="在线VIP视频免费观看, 嘘这个方法我只告诉你!">在线VIP视频免费观看, 嘘这个方法我只告诉你</a></li>
+  <li class="l1"><span class="s10">10</span></li>
+ <li class="l2"><a href="https://www.songma.com/news/txtlist_i3441v.html" title="阿里大牛实战归纳——Kafka架构原理">阿里大牛实战归纳——Kafka架构原理</a></li>
+  </ul>
+ </div> </div>
+ <!--右E-->
+
+</div>
+
+</div>
+
+
+
+<div class="bottom">
+	<div class="smbottom">
+		<div class="footer">
+			<div class="footer-sz left2">
+			 					<dl>
+						<dt><a href="https://www.songma.com/help/search_j9v.html" target="_blank">买家指南</a></dt>
+						<dd>
+						  							<p><a href="https://www.songma.com/help/view7.html" target="_blank" rel="nofollow">如何注册</a></p>
+							  							<p><a href="https://www.songma.com/help/view8.html" target="_blank" rel="nofollow">如何购买</a></p>
+							  							<p><a href="https://www.songma.com/help/view9.html" target="_blank" rel="nofollow">搜索商品</a></p>
+							  							<p><a href="https://www.songma.com/help/view10.html" target="_blank" rel="nofollow">支付方式</a></p>
+							  						</dd>
+					</dl>
+										<dl>
+						<dt><a href="https://www.songma.com/help/search_j10v.html" target="_blank">卖家指南</a></dt>
+						<dd>
+						  							<p><a href="https://www.songma.com/help/search_j10v_k18v.html" target="_blank" rel="nofollow">如何开店</a></p>
+							  							<p><a href="https://www.songma.com/help/view13.html" target="_blank" rel="nofollow">收费标准</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j10v_k20v.html" target="_blank" rel="nofollow">入驻签约</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j10v_k33v.html" target="_blank" rel="nofollow">保证金</a></p>
+							  						</dd>
+					</dl>
+										<dl>
+						<dt><a href="https://www.songma.com/help/search_j11v.html" target="_blank">安全交易</a></dt>
+						<dd>
+						  							<p><a href="https://www.songma.com/help/view3.html" target="_blank" rel="nofollow">钓鱼防骗</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j11v_k22v.html" target="_blank" rel="nofollow">预防盗号</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j11v_k23v.html" target="_blank" rel="nofollow">谨防诈骗</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j11v_k24v.html" target="_blank" rel="nofollow">实名认证</a></p>
+							  						</dd>
+					</dl>
+										<dl>
+						<dt><a href="https://www.songma.com/help/search_j12v.html" target="_blank">常见问题</a></dt>
+						<dd>
+						  							<p><a href="https://www.songma.com/help/search_j12v_k25v.html" target="_blank" rel="nofollow">如何充值</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j12v_k26v.html" target="_blank" rel="nofollow">如何提现</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j12v_k27v.html" target="_blank" rel="nofollow">真假客服</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j12v_k28v.html" target="_blank" rel="nofollow">忘记密码</a></p>
+							  						</dd>
+					</dl>
+										<dl>
+						<dt><a href="https://www.songma.com/help/search_j13v.html" target="_blank">服务中心</a></dt>
+						<dd>
+						  							<p><a href="https://www.songma.com/help/view6.html" target="_blank" rel="nofollow">我要建议</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j13v_k31v.html" target="_blank" rel="nofollow">我要投诉</a></p>
+							  							<p><a href="https://www.songma.com/help/view21.html" target="_blank" rel="nofollow">QQ客服</a></p>
+							  							<p><a href="https://www.songma.com/help/search_j13v_k29v.html" target="_blank" rel="nofollow">商务合作</a></p>
+							  						</dd>
+					</dl>
+										
+				
+			</div>
+			<div class="footer-sy footer-wx">
+					<div class="left2">
+						<b>管理客服</b>
+												<p>QQ：<a style="color: #007de4;" title="联系客服QQ" target="_blank" href="https://www.songma.com/go/kf.php?qq" rel="“external" nofollow”="">40899112</a></p>
+						<p>电话：0798-2109226</p>
+						<p>邮箱：mail@songma.com</p>
+						<p>时间：9:00-23:00</p>
+					</div>
+					<div class="footer-wx">
+						<span><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/wxewm.png" width="100" height="100" alt="微信二维码"></span>
+						<p>送码官方微信</p>
+					</div>
+				</div>
+
+		</div>
+		<div class="footer-nl">
+				<div class="footer-nl-a left2">
+					<p><a href="https://www.songma.com/help/aboutview2.html" target="_blank" rel="nofollow">关于我们</a>  
+					<a href="https://www.songma.com/help/aboutview3.html" target="_blank" rel="nofollow">广告合作</a> 
+					<a href="https://www.songma.com/help/aboutview4.html" target="_blank" rel="nofollow">联系我们</a> 
+					<a href="https://www.songma.com/help/aboutview5.html" target="_blank" rel="nofollow">隐私条款</a> 
+					<a href="https://www.songma.com/help/aboutview6.html" target="_blank" rel="nofollow">免责声明</a> 
+					<a href="https://www.songma.com/" target="_blank" rel="nofollow">网站首页</a> |<em>&nbsp;景德镇送码科技有限公司版权所有 </em> </p>
+					<cite><a href="http://www.beian.miit.gov.cn/" target="_blank" rel="nofollow">赣ICP备19014045号-1</a>   <a href="https://www.songma.com/help/view25.html" target="_blank" rel="nofollow">增值电信业务许可证:赣B2-20200002</a> </cite>
+				</div>
+				<div class="footer-nl-i footer-wx">
+					<a><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/renzheng2.png" alt="认证"></a>
+					<a><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/renzheng3.jpg" height="40" alt="认证"></a>
+					<a><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/renzheng4.png" height="40" alt="认证"></a>
+					<a><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/renzheng5.jpg" height="40" alt="认证"></a>
+				</div>
+			</div>
+
+	</div>
+</div>
+
+
+ 
+<!--***********右侧浮动开始*************-->
+
+  <div class="right-btn-group"> 
+   <ul class="btn-group"> 
+    <li><a href="https://www.songma.com/user/" class="icon-2 login-a"><span>个人中心</span></a></li> 
+    <li class="sign-but"><a href="https://www.songma.com/user/qiandao.php" class="icon-4 login-a" rel="nofollow"><span>点击签到</span></a></li> 
+    <li><a href="https://www.songma.com/user/newslx.php" class="icon-3 login-a"><span>我要投稿</span></a></li> 
+    
+    <li><a href="https://www.songma.com/user/gdlx.php" class="icon-5" target="_blank"><span>意见反馈</span></a></li> 
+   </ul> 
+   <div class="show-wechat"> 
+    <a href="https://www.songma.com/mt" class="icon-7"><span><img src="./Android中okhttp原理详解-极度针对面试篇 - 送码网_files/sjwz.png" width="137" height="137" alt="手机二维码"><em>手机访问领取大礼包</em></span></a>
+   </div> 
+   <div class="to-top">
+    <a href="javascript:;" id="returnTop" class="icon-6" rel="nofollow"><span>返回顶部</span></a>
+   </div>
+  </div>
+
+<!--**********右侧浮动结束***************-->
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?9156bf7aa482676cf95ee23c36029d20";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+</body></html>

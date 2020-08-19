@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<!-- saved from url=(0053)https://www.cnblogs.com/Android-Alvin/p/12530226.html -->
+<html lang="zh-cn"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="origin">
+    <meta property="og:description" content="网络">
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园</title>
+    <link id="favicon" rel="shortcut icon" href="https://common.cnblogs.com/favicon.ico?v=20200522" type="image/x-icon">
+    
+    <link rel="stylesheet" href="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/blog-common.min.css">
+    <link id="MainCss" rel="stylesheet" href="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/bundle-simpleblue.min.css">
+    
+    <link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/bundle-simpleblue-mobile.min.css">
+    
+    <link type="application/rss+xml" rel="alternate" href="https://www.cnblogs.com/Android-Alvin/rss">
+    <link type="application/rsd+xml" rel="EditURI" href="https://www.cnblogs.com/Android-Alvin/rsd.xml">
+    <link type="application/wlwmanifest+xml" rel="wlwmanifest" href="https://www.cnblogs.com/Android-Alvin/wlwmanifest.xml">
+    <script async="" src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/analytics.js"></script><script>
+        var currentBlogId = 556685;
+        var currentBlogApp = 'Android-Alvin';
+        var cb_enable_mathjax = false;
+        var isLogined = false;
+        var isBlogOwner = false;
+        var skinName = 'SimpleBlue';
+        var visitorUserId = '';
+    </script>
+        <script>
+            var currentPostDateAdded = '2020-03-20 10:47';
+        </script>
+    <script src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/jquery-2.2.0.min.js"></script>
+    <script src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/blog-common.min.js"></script>
+    
+    
+    
+<link rel="preload" href="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/f.txt" as="script"><script type="text/javascript" src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/f.txt"></script><script src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/pubads_impl_2020081801.js" async=""></script><link rel="prefetch" href="https://3b1487abef406774177b0d75adb60323.safeframe.googlesyndication.com/safeframe/1-0-37/html/container.html"><link rel="prefetch" href="https://tpc.googlesyndication.com/safeframe/1-0-37/html/container.html"></head>
+<body>
+    <a name="top"></a>
+    
+    <div id="home">
+    <div id="header">
+        <div id="blogTitle">
+            
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle HeaderMainTitle" href="https://www.cnblogs.com/Android-Alvin/">AndroidAlvin</a>
+</div>
+<div class="subtitle">
+
+</div>
+
+        </div>
+        <div id="navigator">
+            
+<ul id="navList">
+    <li id="nav_sitehome"><a id="blog_nav_sitehome" class="menu" href="https://www.cnblogs.com/">
+博客园</a>
+</li>
+    <li id="nav_myhome">
+<a id="blog_nav_myhome" class="menu" href="https://www.cnblogs.com/Android-Alvin/">
+首页</a>
+</li>
+    <li id="nav_newpost">
+
+<a id="blog_nav_newpost" class="menu" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">
+新随笔</a>
+</li>
+    <li id="nav_contact">
+<a id="blog_nav_contact" class="menu" href="https://msg.cnblogs.com/send/AndroidAlvin">
+联系</a></li>
+    <li id="nav_rss">
+<a id="blog_nav_rss" class="menu" href="javascript:void(0)" data-rss="https://www.cnblogs.com/Android-Alvin/rss/">
+订阅</a></li>
+    <li id="nav_admin">
+<a id="blog_nav_admin" class="menu" href="https://i.cnblogs.com/">
+管理</a>
+</li>
+</ul>
+
+            <div class="blogStats">
+                
+<span id="stats_post_count">随笔 - 
+222&nbsp;</span>
+<span id="stats_article_count">文章 - 
+4&nbsp;</span>
+<!-- <span id="stats-comment_count"></span> -->
+<span id="stats_comment_count">评论 - 
+0</span>
+            </div>
+        </div>
+    </div>
+    <div id="main">
+        <div id="mainContent">
+            <div class="forFlow">
+                <div id="post_detail">
+    <div id="topics">
+        <div class="post">
+            <h1 class="postTitle">
+                
+<a id="cb_post_title_url" class="postTitle2 vertical-middle" href="https://www.cnblogs.com/Android-Alvin/p/12530226.html">
+    <span>面试还没搞懂OkHttp原理？看完这篇文章全明白了</span>
+    
+
+
+</a>
+
+            </h1>
+            <div class="clear"></div>
+            <div class="postBody">
+                
+    <div id="cnblogs_post_description" style="display: none">
+        网络
+    </div>
+<div id="cnblogs_post_body" class="blogpost-body">
+    <blockquote>
+<p>最近打算做网络相关的优化工作，不免需要重新熟悉一下网络框架，在Android领域网络框架的龙头老大非OkHttp莫属，借此机会对OkHttp的一些内部实现进行深入的剖析，同时这些问题也是面试时的常客，相信一定对你有帮助。</p>
+</blockquote>
+<p>先来一发灵魂拷问四连击：</p>
+<ul>
+<li>addInterceptor与addNetworkInterceptor有什么区别？</li>
+<li>网络缓存如何实现的？</li>
+<li>网络连接怎么实现复用？</li>
+<li>OkHttp如何做网络监控？</li>
+</ul>
+<p>是不是既熟悉又陌生，实际上就是因为网络框架已经为我们实现了这些基本功能，所以很容易被我们忽略。为了完整的分析上面的问题，我们需要先复习一下OkHttp的基础原理：</p>
+<h2>OkHttp基本实现原理</h2>
+<p>OkHttp的内部实现通过一个责任链模式完成，将网络请求的各个阶段封装到各个链条中，实现了各层的解耦。</p>
+<p>文内源码基于OkHttp最新版本4.2.2，从4.0.0版本开始，OkHttp使用全Kotlin语言开发，没上车的小伙伴要抓紧了，要不源码都快看不懂了 [捂脸]，学习Kotlin可参考旧文&nbsp;<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fjuejin.im%2Fpost%2F5d566524f265da03a14854ad" target="_blank">Kotlin学习系列文章Overview</a>&nbsp;。</p>
+<p>我们从发起一次请求的调用开始，熟悉一下OkHttp执行的流程。</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin"><span class="token comment">//创建OkHttpClient
+<span class="token keyword">val client <span class="token operator">= OkHttpClient<span class="token punctuation">.<span class="token function">Builder<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">build<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">;
+
+<span class="token comment">//创建请求
+<span class="token keyword">val request <span class="token operator">= Request<span class="token punctuation">.<span class="token function">Builder<span class="token punctuation">(<span class="token punctuation">)
+           <span class="token punctuation">.<span class="token function">url<span class="token punctuation">(<span class="token string">"https://wanandroid.com/wxarticle/list/408/1/json"<span class="token punctuation">)
+           <span class="token punctuation">.<span class="token function">build<span class="token punctuation">(<span class="token punctuation">)
+
+<span class="token comment">//同步任务开启新线程执行
+Thread <span class="token punctuation">{
+    <span class="token comment">//发起网络请求
+    <span class="token keyword">val response <span class="token operator">= client<span class="token punctuation">.<span class="token function">newCall<span class="token punctuation">(request<span class="token punctuation">)<span class="token punctuation">.<span class="token function">execute<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token keyword">if <span class="token punctuation">(<span class="token operator">!response<span class="token punctuation">.isSuccessful<span class="token punctuation">) <span class="token keyword">throw <span class="token function">IOException<span class="token punctuation">(<span class="token string">"Unexpected code <span class="token interpolation variable">$response"<span class="token punctuation">)
+    Log<span class="token punctuation">.<span class="token function">d<span class="token punctuation">(<span class="token string">"okhttp_test"<span class="token punctuation">, <span class="token string">"response:  <span class="token interpolation"><span class="token delimiter variable">${response<span class="token punctuation">.body<span class="token operator">?<span class="token punctuation">.<span class="token function">string<span class="token punctuation">(<span class="token punctuation">)<span class="token delimiter variable">}"<span class="token punctuation">)
+<span class="token punctuation">}<span class="token punctuation">.<span class="token function">start<span class="token punctuation">(<span class="token punctuation">)
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>所以核心的代码逻辑是通过OkHttpClient的newCall方法创建了一个Call对象，并调用其execute方法；Call代表一个网络请求的接口，实现类只有一个RealCall。execute表示同步发起网络请求，与之对应还有一个enqueue方法，表示发起一个异步请求，因此同时需要传入callback。</p>
+<p>我们来看RealCall的execute方法：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin"># RealCall
+<span class="token keyword">override <span class="token keyword">fun <span class="token function">execute<span class="token punctuation">(<span class="token punctuation">)<span class="token operator">: Response <span class="token punctuation">{
+    <span class="token operator">..<span class="token punctuation">.
+    <span class="token comment">//开始计时超时、发请求开始回调
+    transmitter<span class="token punctuation">.<span class="token function">timeoutEnter<span class="token punctuation">(<span class="token punctuation">)
+    transmitter<span class="token punctuation">.<span class="token function">callStart<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token keyword">try <span class="token punctuation">{
+      client<span class="token punctuation">.dispatcher<span class="token punctuation">.<span class="token function">executed<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">)<span class="token comment">//第1步
+      <span class="token keyword">return <span class="token function">getResponseWithInterceptorChain<span class="token punctuation">(<span class="token punctuation">)<span class="token comment">//第2步
+    <span class="token punctuation">} <span class="token keyword">finally <span class="token punctuation">{
+      client<span class="token punctuation">.dispatcher<span class="token punctuation">.<span class="token function">finished<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">)<span class="token comment">//第3步
+    <span class="token punctuation">}
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>把大象装冰箱，统共也只需要三步。</p>
+<h3>第一步</h3>
+<p>调用Dispatcher的execute方法，那Dispatcher是什么呢？从名字来看它是一个调度器，调度什么呢？就是所有网络请求，也就是RealCall对象。网络请求支持同步执行和异步执行，异步执行就需要线程池、并发阈值这些东西，如果超过阈值需要将超过的部分存储起来，这样一分析Dispatcher的功能就可以总结如下：</p>
+<ul>
+<li>记录同步任务、异步任务及等待执行的异步任务。</li>
+<li>线程池管理异步任务。</li>
+<li>发起/取消网络请求API：execute、enqueue、cancel。</li>
+</ul>
+<p>OkHttp设置了默认的最大并发请求量 maxRequests = 64 和单个host支持的最大并发量 maxRequestsPerHost = 5。</p>
+<p>同时用三个双端队列存储这些请求：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin"># Dispatcher
+<span class="token comment">//异步任务等待队列
+<span class="token keyword">private <span class="token keyword">val readyAsyncCalls <span class="token operator">= ArrayDeque<span class="token operator">&lt;AsyncCall<span class="token operator">&gt;<span class="token punctuation">(<span class="token punctuation">)
+<span class="token comment">//异步任务队列
+<span class="token keyword">private <span class="token keyword">val runningAsyncCalls <span class="token operator">= ArrayDeque<span class="token operator">&lt;AsyncCall<span class="token operator">&gt;<span class="token punctuation">(<span class="token punctuation">)
+<span class="token comment">//同步任务队列
+<span class="token keyword">private <span class="token keyword">val runningSyncCalls <span class="token operator">= ArrayDeque<span class="token operator">&lt;RealCall<span class="token operator">&gt;<span class="token punctuation">(<span class="token punctuation">)
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>为什么要使用双端队列？很简单因为网络请求执行顺序跟排队一样，讲究先来后到，新来的请求放队尾，执行请求从对头部取。</p>
+<p>说到这LinkedList表示不服，我们知道LinkedList同样也实现了Deque接口，内部是用链表实现的双端队列，那为什么不用LinkedList呢？</p>
+<p>实际上这与readyAsyncCalls向runningAsyncCalls转换有关，当执行完一个请求或调用enqueue方法入队新的请求时，会对readyAsyncCalls进行一次遍历，将那些符合条件的等待请求转移到runningAsyncCalls队列中并交给线程池执行。尽管二者都能完成这项任务，但是由于链表的数据结构致使元素离散的分布在内存的各个位置，CPU缓存无法带来太多的便利，另外在垃圾回收时，使用数组结构的效率要优于链表。</p>
+<p>回到主题，上述的核心逻辑在promoteAndExecute方法中：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin">#Dispatcher
+<span class="token keyword">private <span class="token keyword">fun <span class="token function">promoteAndExecute<span class="token punctuation">(<span class="token punctuation">)<span class="token operator">: Boolean <span class="token punctuation">{
+    <span class="token keyword">val executableCalls <span class="token operator">= mutableListOf<span class="token operator">&lt;AsyncCall<span class="token operator">&gt;<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token keyword">val isRunning<span class="token operator">: Boolean
+    <span class="token function">synchronized<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token keyword">val i <span class="token operator">= readyAsyncCalls<span class="token punctuation">.<span class="token function">iterator<span class="token punctuation">(<span class="token punctuation">)
+      <span class="token comment">//遍历readyAsyncCalls
+      <span class="token keyword">while <span class="token punctuation">(i<span class="token punctuation">.<span class="token function">hasNext<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">) <span class="token punctuation">{
+        <span class="token keyword">val asyncCall <span class="token operator">= i<span class="token punctuation">.<span class="token function">next<span class="token punctuation">(<span class="token punctuation">)
+        <span class="token comment">//阈值校验
+        <span class="token keyword">if <span class="token punctuation">(runningAsyncCalls<span class="token punctuation">.size <span class="token operator">&gt;= <span class="token keyword">this<span class="token punctuation">.maxRequests<span class="token punctuation">) <span class="token keyword">break <span class="token comment">// Max capacity.
+        <span class="token keyword">if <span class="token punctuation">(asyncCall<span class="token punctuation">.<span class="token function">callsPerHost<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">get<span class="token punctuation">(<span class="token punctuation">) <span class="token operator">&gt;= <span class="token keyword">this<span class="token punctuation">.maxRequestsPerHost<span class="token punctuation">) <span class="token keyword">continue <span class="token comment">// Host max capacity.
+        <span class="token comment">//符合条件 从readyAsyncCalls列表中删除
+        i<span class="token punctuation">.<span class="token function">remove<span class="token punctuation">(<span class="token punctuation">)
+        <span class="token comment">//per host 计数加1
+        asyncCall<span class="token punctuation">.<span class="token function">callsPerHost<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">incrementAndGet<span class="token punctuation">(<span class="token punctuation">)
+        executableCalls<span class="token punctuation">.<span class="token function">add<span class="token punctuation">(asyncCall<span class="token punctuation">)
+        <span class="token comment">//移入runningAsyncCalls列表
+        runningAsyncCalls<span class="token punctuation">.<span class="token function">add<span class="token punctuation">(asyncCall<span class="token punctuation">)
+      <span class="token punctuation">}
+      isRunning <span class="token operator">= <span class="token function">runningCallsCount<span class="token punctuation">(<span class="token punctuation">) <span class="token operator">&gt; <span class="token number">0
+    <span class="token punctuation">}
+
+    <span class="token keyword">for <span class="token punctuation">(i <span class="token keyword">in <span class="token number">0 until executableCalls<span class="token punctuation">.size<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token keyword">val asyncCall <span class="token operator">= executableCalls<span class="token punctuation">[i<span class="token punctuation">]
+      <span class="token comment">//提交任务到线程池
+      asyncCall<span class="token punctuation">.<span class="token function">executeOn<span class="token punctuation">(executorService<span class="token punctuation">)
+    <span class="token punctuation">}
+
+    <span class="token keyword">return isRunning
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>这个方法在enqueue和finish方法中都会调用，即当有新的请求入队和当前请求完成后，需要重新提交一遍任务到线程池。</p>
+<p>讲了半天线程池，那OkHttp内部到底用的什么线程池呢？</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin">#Dispatcher 
+<span class="token annotation builtin">@get:JvmName<span class="token punctuation">(<span class="token string">"executorService"<span class="token punctuation">) <span class="token keyword">val executorService<span class="token operator">: ExecutorService
+<span class="token keyword">get<span class="token punctuation">(<span class="token punctuation">) <span class="token punctuation">{
+  <span class="token keyword">if <span class="token punctuation">(executorServiceOrNull <span class="token operator">== <span class="token keyword">null<span class="token punctuation">) <span class="token punctuation">{
+    executorServiceOrNull <span class="token operator">= <span class="token function">ThreadPoolExecutor<span class="token punctuation">(<span class="token number">0<span class="token punctuation">, Int<span class="token punctuation">.MAX_VALUE<span class="token punctuation">, <span class="token number">60<span class="token punctuation">, TimeUnit<span class="token punctuation">.SECONDS<span class="token punctuation">,
+        <span class="token function">SynchronousQueue<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">, <span class="token function">threadFactory<span class="token punctuation">(<span class="token string">"OkHttp Dispatcher"<span class="token punctuation">, <span class="token boolean">false<span class="token punctuation">)<span class="token punctuation">)
+  <span class="token punctuation">}
+  <span class="token keyword">return executorServiceOrNull<span class="token operator">!!
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>这不是一个newCachedThreadPool吗？没错，除了最后一个threadFactory参数之外与newCachedThreadPool一毛一样，只不过是设置了线程名字而已，用于排查问题。</p>
+<p>阻塞队列用的SynchronousQueue，它的特点是不存储数据，当添加一个元素时，必须等待一个消费线程取出它，否则一直阻塞，如果当前有空闲线程则直接在这个空闲线程执行，如果没有则新启动一个线程执行任务。通常用于需要快速响应任务的场景，在网络请求要求低延迟的大背景下比较合适，详见旧文&nbsp;<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fjuejin.im%2Fpost%2F5d566458f265da03e71af066" target="_blank">Java线程池工作原理浅析</a>。</p>
+<p>继续回到主线，第二步比较复杂我们先跳过，来看第三步。</p>
+<h3>第三步</h3>
+<p>调用Dispatcher的finished方法</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin"><span class="token comment">//异步任务执行结束
+<span class="token keyword">internal <span class="token keyword">fun <span class="token function">finished<span class="token punctuation">(call<span class="token operator">: AsyncCall<span class="token punctuation">) <span class="token punctuation">{
+    call<span class="token punctuation">.<span class="token function">callsPerHost<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">decrementAndGet<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token function">finished<span class="token punctuation">(runningAsyncCalls<span class="token punctuation">, call<span class="token punctuation">)
+<span class="token punctuation">}
+
+<span class="token comment">//同步任务执行结束
+<span class="token keyword">internal <span class="token keyword">fun <span class="token function">finished<span class="token punctuation">(call<span class="token operator">: RealCall<span class="token punctuation">) <span class="token punctuation">{
+    <span class="token function">finished<span class="token punctuation">(runningSyncCalls<span class="token punctuation">, call<span class="token punctuation">)
+<span class="token punctuation">}
+
+<span class="token comment">//同步异步任务 统一汇总到这里
+<span class="token keyword">private <span class="token keyword">fun <span class="token operator">&lt;T<span class="token operator">&gt; <span class="token function">finished<span class="token punctuation">(calls<span class="token operator">: Deque<span class="token operator">&lt;T<span class="token operator">&gt;<span class="token punctuation">, call<span class="token operator">: T<span class="token punctuation">) <span class="token punctuation">{
+    <span class="token keyword">val idleCallback<span class="token operator">: Runnable<span class="token operator">?
+    <span class="token function">synchronized<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token comment">//将完成的任务从队列中删除
+      <span class="token keyword">if <span class="token punctuation">(<span class="token operator">!calls<span class="token punctuation">.<span class="token function">remove<span class="token punctuation">(call<span class="token punctuation">)<span class="token punctuation">) <span class="token keyword">throw <span class="token function">AssertionError<span class="token punctuation">(<span class="token string">"Call wasn't in-flight!"<span class="token punctuation">)
+      idleCallback <span class="token operator">= <span class="token keyword">this<span class="token punctuation">.idleCallback
+    <span class="token punctuation">}
+    <span class="token comment">//这个方法在第一步中已经分析，用于将等待队列中的请求移入异步队列，并交由线程池执行。
+    <span class="token keyword">val isRunning <span class="token operator">= <span class="token function">promoteAndExecute<span class="token punctuation">(<span class="token punctuation">)
+
+    <span class="token comment">//如果没有请求需要执行，回调闲置callback
+    <span class="token keyword">if <span class="token punctuation">(<span class="token operator">!isRunning <span class="token operator">&amp;&amp; idleCallback <span class="token operator">!= <span class="token keyword">null<span class="token punctuation">) <span class="token punctuation">{
+      idleCallback<span class="token punctuation">.<span class="token function">run<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token punctuation">}
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<h3>第二步</h3>
+<p>现在我们回过头来看最复杂的第二步，调用getResponseWithInterceptorChain方法，这也是整个OkHttp实现责任链模式的核心。</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin">#RealCall
+<span class="token keyword">fun <span class="token function">getResponseWithInterceptorChain<span class="token punctuation">(<span class="token punctuation">)<span class="token operator">: Response <span class="token punctuation">{
+    <span class="token comment">//创建拦截器数组
+    <span class="token keyword">val interceptors <span class="token operator">= mutableListOf<span class="token operator">&lt;Interceptor<span class="token operator">&gt;<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token comment">//添加应用拦截器
+    interceptors <span class="token operator">+= client<span class="token punctuation">.interceptors
+    <span class="token comment">//添加重试和重定向拦截器
+    interceptors <span class="token operator">+= <span class="token function">RetryAndFollowUpInterceptor<span class="token punctuation">(client<span class="token punctuation">)
+    <span class="token comment">//添加桥接拦截器
+    interceptors <span class="token operator">+= <span class="token function">BridgeInterceptor<span class="token punctuation">(client<span class="token punctuation">.cookieJar<span class="token punctuation">)
+    <span class="token comment">//添加缓存拦截器
+    interceptors <span class="token operator">+= <span class="token function">CacheInterceptor<span class="token punctuation">(client<span class="token punctuation">.cache<span class="token punctuation">)
+    <span class="token comment">//添加连接拦截器
+    interceptors <span class="token operator">+= ConnectInterceptor
+    <span class="token keyword">if <span class="token punctuation">(<span class="token operator">!forWebSocket<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token comment">//添加网络拦截器
+      interceptors <span class="token operator">+= client<span class="token punctuation">.networkInterceptors
+    <span class="token punctuation">}
+    <span class="token comment">//添加请求拦截器
+    interceptors <span class="token operator">+= <span class="token function">CallServerInterceptor<span class="token punctuation">(forWebSocket<span class="token punctuation">)
+
+    <span class="token comment">//创建责任链
+    <span class="token keyword">val chain <span class="token operator">= <span class="token function">RealInterceptorChain<span class="token punctuation">(interceptors<span class="token punctuation">, transmitter<span class="token punctuation">, <span class="token keyword">null<span class="token punctuation">, <span class="token number">0<span class="token punctuation">, originalRequest<span class="token punctuation">, <span class="token keyword">this<span class="token punctuation">,
+        client<span class="token punctuation">.connectTimeoutMillis<span class="token punctuation">, client<span class="token punctuation">.readTimeoutMillis<span class="token punctuation">, client<span class="token punctuation">.writeTimeoutMillis<span class="token punctuation">)
+    <span class="token operator">..<span class="token punctuation">.
+    <span class="token keyword">try <span class="token punctuation">{
+      <span class="token comment">//启动责任链
+      <span class="token keyword">val response <span class="token operator">= chain<span class="token punctuation">.<span class="token function">proceed<span class="token punctuation">(originalRequest<span class="token punctuation">)
+      <span class="token operator">..<span class="token punctuation">.
+      <span class="token keyword">return response
+    <span class="token punctuation">} <span class="token keyword">catch <span class="token punctuation">(e<span class="token operator">: IOException<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token operator">..<span class="token punctuation">.
+    <span class="token punctuation">}
+  <span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>我们先不关心每个拦截器具体做了什么，主流程最终走到<code>chain.proceed(originalRequest)</code>。我们看一下这个procceed方法：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin">  # RealInterceptorChain
+  <span class="token keyword">override <span class="token keyword">fun <span class="token function">proceed<span class="token punctuation">(request<span class="token operator">: Request<span class="token punctuation">)<span class="token operator">: Response <span class="token punctuation">{
+    <span class="token keyword">return <span class="token function">proceed<span class="token punctuation">(request<span class="token punctuation">, transmitter<span class="token punctuation">, exchange<span class="token punctuation">)
+  <span class="token punctuation">}
+
+  <span class="token annotation builtin">@Throws<span class="token punctuation">(IOException<span class="token operator">::<span class="token keyword">class<span class="token punctuation">)
+  <span class="token keyword">fun <span class="token function">proceed<span class="token punctuation">(request<span class="token operator">: Request<span class="token punctuation">, transmitter<span class="token operator">: Transmitter<span class="token punctuation">, exchange<span class="token operator">: Exchange<span class="token operator">?<span class="token punctuation">)<span class="token operator">: Response <span class="token punctuation">{
+    <span class="token keyword">if <span class="token punctuation">(index <span class="token operator">&gt;= interceptors<span class="token punctuation">.size<span class="token punctuation">) <span class="token keyword">throw <span class="token function">AssertionError<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token comment">// 统计当前拦截器调用proceed方法的次数
+    calls<span class="token operator">++
+
+    <span class="token comment">// exchage是对请求流的封装，在执行ConnectInterceptor前为空，连接和流已经建立但此时此连接不再支持当前url
+    <span class="token comment">// 说明之前的网络拦截器对url或端口进行了修改，这是不允许的!!
+    <span class="token function">check<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">.exchange <span class="token operator">== <span class="token keyword">null <span class="token operator">|| <span class="token keyword">this<span class="token punctuation">.exchange<span class="token punctuation">.<span class="token function">connection<span class="token punctuation">(<span class="token punctuation">)<span class="token operator">!!<span class="token punctuation">.<span class="token function">supportsUrl<span class="token punctuation">(request<span class="token punctuation">.url<span class="token punctuation">)<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token string">"network interceptor <span class="token interpolation"><span class="token delimiter variable">${interceptors<span class="token punctuation">[index <span class="token operator">- <span class="token number">1<span class="token punctuation">]<span class="token delimiter variable">} must retain the same host and port"
+    <span class="token punctuation">}
+
+    <span class="token comment">// 这里是对拦截器调用proceed方法的限制，在ConnectInterceptor及其之后的拦截器最多只能调用一次proceed!!
+    <span class="token function">check<span class="token punctuation">(<span class="token keyword">this<span class="token punctuation">.exchange <span class="token operator">== <span class="token keyword">null <span class="token operator">|| calls <span class="token operator">&lt;= <span class="token number">1<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token string">"network interceptor <span class="token interpolation"><span class="token delimiter variable">${interceptors<span class="token punctuation">[index <span class="token operator">- <span class="token number">1<span class="token punctuation">]<span class="token delimiter variable">} must call proceed() exactly once"
+    <span class="token punctuation">}
+
+    <span class="token comment">// 创建下一层责任链 注意index + 1
+    <span class="token keyword">val next <span class="token operator">= <span class="token function">RealInterceptorChain<span class="token punctuation">(interceptors<span class="token punctuation">, transmitter<span class="token punctuation">, exchange<span class="token punctuation">,
+        index <span class="token operator">+ <span class="token number">1<span class="token punctuation">, request<span class="token punctuation">, call<span class="token punctuation">, connectTimeout<span class="token punctuation">, readTimeout<span class="token punctuation">, writeTimeout<span class="token punctuation">)
+
+    <span class="token comment">//取出下标为index的拦截器，并调用其intercept方法，将新建的链传入。
+    <span class="token keyword">val interceptor <span class="token operator">= interceptors<span class="token punctuation">[index<span class="token punctuation">]
+    <span class="token keyword">val response <span class="token operator">= interceptor<span class="token punctuation">.<span class="token function">intercept<span class="token punctuation">(next<span class="token punctuation">) 
+
+    <span class="token comment">// 保证在ConnectInterceptor及其之后的拦截器至少调用一次proceed!!
+    <span class="token function">check<span class="token punctuation">(exchange <span class="token operator">== <span class="token keyword">null <span class="token operator">|| index <span class="token operator">+ <span class="token number">1 <span class="token operator">&gt;= interceptors<span class="token punctuation">.size <span class="token operator">|| next<span class="token punctuation">.calls <span class="token operator">== <span class="token number">1<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token string">"network interceptor <span class="token interpolation variable">$interceptor must call proceed() exactly once"
+    <span class="token punctuation">}
+
+    <span class="token keyword">return response
+  <span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>代码中的注释已经写得比较清楚了，总结起来就是创建下一级责任链，然后取出当前拦截器，调用其intercept方法并传入创建的责任链。++为保证责任链能依次进行下去，必须保证除最后一个拦截器（CallServerInterceptor）外，其他所有拦截器intercept方法内部必须调用一次chain.proceed()方法++，如此一来整个责任链就运行起来了。</p>
+<p>比如ConnectInterceptor源码中：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin"># ConnectInterceptor 这里使用单例
+<span class="token keyword">object ConnectInterceptor <span class="token operator">: Interceptor <span class="token punctuation">{
+
+  <span class="token annotation builtin">@Throws<span class="token punctuation">(IOException<span class="token operator">::<span class="token keyword">class<span class="token punctuation">)
+  <span class="token keyword">override <span class="token keyword">fun <span class="token function">intercept<span class="token punctuation">(chain<span class="token operator">: Interceptor<span class="token punctuation">.Chain<span class="token punctuation">)<span class="token operator">: Response <span class="token punctuation">{
+    <span class="token keyword">val realChain <span class="token operator">= chain <span class="token keyword">as RealInterceptorChain
+    <span class="token keyword">val request <span class="token operator">= realChain<span class="token punctuation">.<span class="token function">request<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token keyword">val transmitter <span class="token operator">= realChain<span class="token punctuation">.<span class="token function">transmitter<span class="token punctuation">(<span class="token punctuation">)
+
+    <span class="token keyword">val doExtensiveHealthChecks <span class="token operator">= request<span class="token punctuation">.method <span class="token operator">!= <span class="token string">"GET"
+    <span class="token comment">//创建连接和流
+    <span class="token keyword">val exchange <span class="token operator">= transmitter<span class="token punctuation">.<span class="token function">newExchange<span class="token punctuation">(chain<span class="token punctuation">, doExtensiveHealthChecks<span class="token punctuation">)
+    <span class="token comment">//执行下一级责任链
+    <span class="token keyword">return realChain<span class="token punctuation">.<span class="token function">proceed<span class="token punctuation">(request<span class="token punctuation">, transmitter<span class="token punctuation">, exchange<span class="token punctuation">)
+  <span class="token punctuation">}
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>除此之外在责任链不同节点对于proceed的调用次数有不同的限制，ConnectInterceptor拦截器及其之后的拦截器能且只能调用一次，因为网络握手、连接、发送请求的工作发生在这些拦截器内，表示正式发出了一次网络请求；而在这之前的拦截器可以执行多次proceed，比如错误重试。</p>
+<p>经过责任链一级一级的递推下去，最终会执行到CallServerInterceptor的intercept方法，此方法会将网络响应的结果封装成一个Response对象并return。之后沿着责任链一级一级的回溯，最终就回到getResponseWithInterceptorChain方法的返回。</p>
+<h3>拦截器分类</h3>
+<p>现在我们需要先大致总结一下责任链的各个节点拦截器的作用：</p>
+<table>
+<thead>
+<tr><th>拦截器</th><th>作用</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>应用拦截器</td>
+<td>拿到的是原始请求，可以添加一些自定义header、通用参数、参数加密、网关接入等等。</td>
+</tr>
+<tr>
+<td>RetryAndFollowUpInterceptor</td>
+<td>处理错误重试和重定向</td>
+</tr>
+<tr>
+<td>BridgeInterceptor</td>
+<td>应用层和网络层的桥接拦截器，主要工作是为请求添加cookie、添加固定的header，比如Host、Content-Length、Content-Type、User-Agent等等，然后保存响应结果的cookie，如果响应使用gzip压缩过，则还需要进行解压。</td>
+</tr>
+<tr>
+<td>CacheInterceptor</td>
+<td>缓存拦截器，如果命中缓存则不会发起网络请求。</td>
+</tr>
+<tr>
+<td>ConnectInterceptor</td>
+<td>连接拦截器，内部会维护一个连接池，负责连接复用、创建连接（三次握手等等）、释放连接以及创建连接上的socket流。</td>
+</tr>
+<tr>
+<td>networkInterceptors（网络拦截器）</td>
+<td>用户自定义拦截器，通常用于监控网络层的数据传输。</td>
+</tr>
+<tr>
+<td>CallServerInterceptor</td>
+<td>请求拦截器，在前置准备工作完成后，真正发起了网络请求。</td>
+</tr>
+</tbody>
+</table>
+<p>至此，OkHttp的核心执行流程就结束了，是不是有种豁然开朗的感觉？现在我们终于可以回答开篇的问题：</p>
+<h2>addInterceptor与addNetworkInterceptor的区别</h2>
+<p>二者通常的叫法为应用拦截器和网络拦截器，从整个责任链路来看，应用拦截器是最先执行的拦截器，也就是用户自己设置request属性后的原始请求，而网络拦截器位于ConnectInterceptor和CallServerInterceptor之间，此时网络链路已经准备好，只等待发送请求数据。</p>
+<ol>
+<li>
+<p>首先，应用拦截器在RetryAndFollowUpInterceptor和CacheInterceptor之前，所以一旦发生错误重试或者网络重定向，网络拦截器可能执行多次，因为相当于进行了二次请求，但是应用拦截器永远只会触发一次。另外如果在CacheInterceptor中命中了缓存就不需要走网络请求了，因此会存在短路网络拦截器的情况。</p>
+</li>
+<li>
+<p>其次，如上文提到除了CallServerInterceptor，每个拦截器都应该至少调用一次realChain.proceed方法。实际上在应用拦截器这层可以多次调用proceed方法（本地异常重试）或者不调用proceed方法（中断），但是网络拦截器这层连接已经准备好，可且仅可调用一次proceed方法。</p>
+</li>
+<li>
+<p>最后，从使用场景看，应用拦截器因为只会调用一次，通常用于统计客户端的网络请求发起情况；而网络拦截器一次调用代表了一定会发起一次网络通信，因此通常可用于统计网络链路上传输的数据。</p>
+</li>
+</ol>
+<h2>网络缓存机制CacheInterceptor</h2>
+<p>这里的缓存是指基于Http网络协议的数据缓存策略，侧重点在客户端缓存，所以我们要先来复习一下Http协议如何根据请求和响应头来标识缓存的可用性。</p>
+<p>提到缓存，就必须要聊聊缓存的有效性、有效期。</p>
+<h3>HTTP缓存原理</h3>
+<p>在HTTP 1.0时代，响应使用Expires头标识缓存的有效期，其值是一个绝对时间，比如Expires:Thu,31 Dec 2020 23:59:59 GMT。当客户端再次发出网络请求时可比较当前时间 和上次响应的expires时间进行比较，来决定是使用缓存还是发起新的请求。</p>
+<p>使用Expires头最大的问题是它依赖客户端的本地时间，如果用户自己修改了本地时间，就会导致无法准确的判断缓存是否过期。</p>
+<p>因此，从HTTP 1.1 开始使用Cache-Control头表示缓存状态，它的优先级高于Expires，常见的取值为下面的一个或多个。</p>
+<ul>
+<li>private，默认值，标识那些私有的业务逻辑数据，比如根据用户行为下发的推荐数据。该模式下网络链路中的代理服务器等节点不应该缓存这部分数据，因为没有实际意义。</li>
+<li>public 与private相反，public用于标识那些通用的业务数据，比如获取新闻列表，所有人看到的都是同一份数据，因此客户端、代理服务器都可以缓存。</li>
+<li>no-cache 可进行缓存，但在客户端使用缓存前必须要去服务端进行缓存资源有效性的验证，即下文的对比缓存部分，我们稍后介绍。</li>
+<li>max-age 表示缓存时长单位为秒，指一个时间段，比如一年，通常用于不经常变化的静态资源。</li>
+<li>no-store 任何节点禁止使用缓存。</li>
+</ul>
+<h4>强制缓存</h4>
+<p>在上述缓存头规约基础之上，强制缓存是指网络请求响应header标识了Expires或Cache-Control带了max-age信息，而此时客户端计算缓存并未过期，则可以直接使用本地缓存内容，而不用真正的发起一次网络请求。</p>
+<h4>协商缓存</h4>
+<p>强制缓存最大的问题是，一旦服务端资源有更新，直到缓存时间截止前，客户端无法获取到最新的资源（除非请求时手动添加no-store头），另外大部分情况下服务器的资源无法直接确定缓存失效时间，所以使用对比缓存更灵活一些。</p>
+<p>使用Last-Modify&nbsp;/&nbsp;If-Modify-Since头实现协商缓存，具体方法是服务端响应头添加Last-Modify头标识资源的最后修改时间，单位为秒，当客户端再次发起请求时添加If-Modify-Since头并赋值为上次请求拿到的Last-Modify头的值。</p>
+<p>服务端收到请求后自行判断缓存资源是否仍然有效，如果有效则返回状态码304同时body体为空，否则下发最新的资源数据。客户端如果发现状态码是304，则取出本地的缓存数据作为响应。</p>
+<p>使用这套方案有一个问题，那就是资源文件使用最后修改时间有一定的局限性：</p>
+<ol>
+<li>Last-Modify单位为秒，如果某些文件在一秒内被修改则并不能准确的标识修改时间。</li>
+<li>资源修改时间并不能作为资源是否修改的唯一依据，比如资源文件是Daily Build的，每天都会生成新的，但是其实际内容可能并未改变。</li>
+</ol>
+<p>因此，HTTP 还提供了另外一组头信息来处理缓存，ETag/If-None-Match。流程与Last-Modify一样，只是把服务端响应的头变成Last-Modify，客户端发出的头变成If-None-Match。ETag是资源的唯一标识符 ，服务端资源变化一定会导致ETag变化。具体的生成方式有服务端控制，场景的影响因素包括，文件最终修改时间、文件大小、文件编号等等。</p>
+<h3>OKHttp的缓存实现</h3>
+<p>上面讲了这么多，实际上OKHttp就是将上述流程用代码实现了一下，即：</p>
+<ol>
+<li>第一次拿到响应后根据头信息决定是否缓存。</li>
+<li>下次请求时判断是否存在本地缓存，是否需要使用对比缓存、封装请求头信息等等。</li>
+<li>如果缓存失效或者需要对比缓存则发出网络请求，否则使用本地缓存。</li>
+</ol>
+<p>OKHttp内部使用Okio来实现缓存文件的读写。</p>
+<p>缓存文件分为CleanFiles和DirtyFiles，CleanFiles用于读，DirtyFiles用于写，他们都是数组，长度为2，表示两个文件，即缓存的请求头和请求体；同时记录了缓存的操作日志，记录在journalFile中。</p>
+<p>开启缓存需要在OkHttpClient创建时设置一个Cache对象，并指定缓存目录和缓存大小，缓存系统内部使用LRU作为缓存的淘汰算法。</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-kotlin"><code class="  language-kotlin">## Cache<span class="token punctuation">.kt
+<span class="token keyword">class Cache <span class="token keyword">internal <span class="token keyword">constructor<span class="token punctuation">(
+  directory<span class="token operator">: File<span class="token punctuation">,
+  maxSize<span class="token operator">: Long<span class="token punctuation">,
+  fileSystem<span class="token operator">: FileSystem
+<span class="token punctuation">)<span class="token operator">: Closeable<span class="token punctuation">, Flushable
+</span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>OkHttp早期的版本有个一个InternalCache接口，支持自定义实现缓存，但到了4.x的版本后删减了InternalCache，Cache类又为final的，相当于关闭了扩展功能。</p>
+<p>具体源码实现都在CacheInterceptor类中，大家可以自行查阅。</p>
+<p>通过OkHttpClient设置缓存是全局状态的，如果我们想对某个特定的request使用或禁用缓存，可以通过CacheControl相关的API实现：</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-cpp"><code class="language-cpp hljs"><span class="token comment"><span class="hljs-comment">//禁用缓存</span>
+Request request <span class="token operator">= <span class="token keyword"><span class="hljs-keyword">new</span> Request<span class="token punctuation">.<span class="token function">Builder<span class="token punctuation">(<span class="token punctuation">)
+    <span class="token punctuation">.<span class="token function">cacheControl<span class="token punctuation">(<span class="token keyword"><span class="hljs-keyword">new</span> CacheControl<span class="token punctuation">.<span class="token function">Builder<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">noCache<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">build<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">)
+    <span class="token punctuation">.<span class="token function">url<span class="token punctuation">(<span class="token string"><span class="hljs-string">"http://publicobject.com/helloworld.txt"</span><span class="token punctuation">)
+    <span class="token punctuation">.<span class="token function">build<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">;
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<h3>OKHttp不支持的缓存情况</h3>
+<p>最后需要注意的一点是，OKHttp默认只支持get请求的缓存。</p>
+<div class="_2Uzcx_"><button class="VJbwyy" type="button"></button>
+<pre class="line-numbers  language-csharp"><code class="language-csharp hljs"><span class="token preprocessor property"><span class="hljs-meta"># okhttp3.Cache.java</span>
+@<span class="token class-name"><span class="hljs-function">Nullable </span><span class="token class-name"><span class="hljs-function">CacheRequest </span><span class="token function"><span class="hljs-function"><span class="hljs-title">put</span></span><span class="token punctuation"><span class="hljs-function">(</span><span class="token class-name"><span class="hljs-function"><span class="hljs-params">Response response</span></span><span class="token punctuation"><span class="hljs-function">) </span><span class="token punctuation">{
+    <span class="token class-name">String requestMethod <span class="token operator">= response<span class="token punctuation">.<span class="token function">request<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">.<span class="token function">method<span class="token punctuation">(<span class="token punctuation">)<span class="token punctuation">;
+    <span class="token punctuation">.<span class="token punctuation">.<span class="token punctuation">.
+    <span class="token comment"><span class="hljs-comment">//缓存仅支持GET请求</span>
+    <span class="token keyword"><span class="hljs-keyword">if</span> <span class="token punctuation">(<span class="token operator">!requestMethod<span class="token punctuation">.<span class="token function"><span class="hljs-keyword">equals</span><span class="token punctuation">(<span class="token string"><span class="hljs-string">"GET"</span><span class="token punctuation">)<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token comment"><span class="hljs-comment">// Don't cache non-GET responses. We're technically allowed to cache</span>
+      <span class="token comment"><span class="hljs-comment">// HEAD requests and some POST requests, but the complexity of doing</span>
+      <span class="token comment"><span class="hljs-comment">// so is high and the benefit is low.</span>
+      <span class="token keyword"><span class="hljs-keyword">return</span> <span class="token keyword"><span class="hljs-literal">null</span><span class="token punctuation">;
+    <span class="token punctuation">}
+
+    <span class="token comment"><span class="hljs-comment">//对于vary头的值为*的情况，统一不缓存</span>
+    <span class="token keyword"><span class="hljs-keyword">if</span> <span class="token punctuation">(HttpHeaders<span class="token punctuation">.<span class="token function">hasVaryAll<span class="token punctuation">(response<span class="token punctuation">)<span class="token punctuation">) <span class="token punctuation">{
+      <span class="token keyword"><span class="hljs-keyword">return</span> <span class="token keyword"><span class="hljs-literal">null</span><span class="token punctuation">;
+    <span class="token punctuation">}
+    <span class="token punctuation">.<span class="token punctuation">.<span class="token punctuation">.
+<span class="token punctuation">}
+</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></code></pre>
+</div>
+<p>这是当网络请求响应后，准备进行缓存时的逻辑代码，当返回null时表示不缓存。从代码注释中不难看出，我们从技术上可以缓存method为HEAD和部分POST请求，但实现起来的复杂性很高而收益甚微。这本质上是由各个method的使用场景决定的。</p>
+<p>我们先来看看常见的method类型及其用途。</p>
+<ul>
+<li>GET 请求资源，参数都在URL中。</li>
+<li>HEAD 与GET基本一致，只不过其不返回消息体，通常用于速度或带宽优先的场景，比如检查资源有效性，可访问性等等。</li>
+<li>POST 提交表单，修改数据，参数在body中。</li>
+<li>PUT 与POST基本一致，最大不同是幂等操作。</li>
+<li>DELETE 删除指定资源。</li>
+</ul>
+<p>可以看到对于标准的RETful请求，GET就是用来获取数据，最适合使用缓存，而对于数据的其他操作缓存意义不大或者根本不需要缓存。</p>
+<p>也是基于此在仅支持GET请求的条件下，OKHTTP使用request URL作为缓存的key（当然还会经过一系列摘要算法）。</p>
+<p>最后上面代码中贴到，如果请求头中包含<code>vary:*</code>这样的头信息也不会被缓存。vary头用于提高多端请求时的缓存命中率，比如两个客户端，一个支持gzip压缩而另一个不支持，二者的请求URL都是一致的，但Accept-Encoding不同，这很容易导致缓存环错乱，我们可以声明<code>vary:Accept-Encoding</code>防止这种情况发生。</p>
+<p>而包含<code>vary:*</code>头信息，标识着此请求是唯一的，不应被缓存，除非有意为之，一般不会这样做来牺牲缓存性能。</p>
+<p>作者：wanderingguy<br data-filtered="filtered">链接：<a href="https://links.jianshu.com/go?to=https%3A%2F%2Fjuejin.im%2Fpost%2F5e69a4bf6fb9a07cd74f6ab8" target="_blank">https://juejin.im/post/5e69a4bf6fb9a07cd74f6ab8</a></p>
+<div>&nbsp;</div>
+<div class="_1kCBjS">
+<div class="_18vaTa">
+<div class="_3BUZPB">
+<div class="_2Bo4Th"><br>&nbsp;</div>
+</div>
+</div>
+<div class="_18vaTa">
+<div class="_3BUZPB ant-dropdown-trigger">&nbsp;</div>
+
+</div>
+
+</div>
+</div>
+<div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="EntryTag">
+    标签: 
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%EF%BC%8CAndroid%E5%BC%80%E5%8F%91/">，Android开发</a></div>
+
+    <div id="blog_post_info">
+<div id="green_channel">
+        <a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(12530226,cb_blogId,1);green_channel_success(this,&#39;谢谢推荐！&#39;);">好文要顶</a>
+        <a id="green_channel_follow" onclick="follow(&#39;a50ca4c4-34c4-4f83-7092-08d75c4ccf5b&#39;);" href="javascript:void(0);">关注我</a>
+    <a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a>
+    <a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/icon_weibo_24.png" alt=""></a>
+    <a id="green_channel_wechat" href="javascript:void(0);" title="分享至微信" onclick="shareOnWechat()"><img src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/wechat.png" alt=""></a>
+</div>
+<div id="author_profile">
+    <div id="author_profile_info" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/Android-Alvin/" target="_blank"><img src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/20191030140420.png" class="author_avatar" alt=""></a>
+        <div id="author_profile_detail" class="author_profile_info">
+            <a href="https://home.cnblogs.com/u/Android-Alvin/">AndroidAlvin</a><br>
+            <a href="https://home.cnblogs.com/u/Android-Alvin/followees/">关注 - 6</a><br>
+            <a href="https://home.cnblogs.com/u/Android-Alvin/followers/">粉丝 - 15</a>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div id="author_profile_honor"></div>
+    <div id="author_profile_follow">
+                <a href="javascript:void(0);" onclick="follow(&#39;a50ca4c4-34c4-4f83-7092-08d75c4ccf5b&#39;);return false;">+加关注</a>
+    </div>
+</div>
+<div id="div_digg">
+    <div class="diggit" onclick="votePost(12530226,&#39;Digg&#39;)">
+        <span class="diggnum" id="digg_count">0</span>
+    </div>
+    <div class="buryit" onclick="votePost(12530226,&#39;Bury&#39;)">
+        <span class="burynum" id="bury_count">0</span>
+    </div>
+    <div class="clear"></div>
+    <div class="diggword" id="digg_tips">
+    </div>
+</div>
+
+<script type="text/javascript">
+    currentDiggType = 0;
+</script></div>
+    <div class="clear"></div>
+    <div id="post_next_prev">
+
+    <a href="https://www.cnblogs.com/Android-Alvin/p/12529765.html" class="p_n_p_prefix">« </a> 上一篇：    <a href="https://www.cnblogs.com/Android-Alvin/p/12529765.html" title="发布于 2020-03-20 09:46">CoordinatorLayout使用详解: 打造折叠悬浮效果</a>
+    <br>
+    <a href="https://www.cnblogs.com/Android-Alvin/p/12550738.html" class="p_n_p_prefix">» </a> 下一篇：    <a href="https://www.cnblogs.com/Android-Alvin/p/12550738.html" title="发布于 2020-03-23 10:43">面试被问HTTP感觉吃力，错过offer，本文帮你树立完整HTTP知识体系！</a>
+
+</div>
+</div>
+            </div>
+            <div class="postDesc">posted @ 
+<span id="post-date">2020-03-20 10:47</span>&nbsp;
+<a href="https://www.cnblogs.com/Android-Alvin/">AndroidAlvin</a>&nbsp;
+阅读(<span id="post_view_count">1472</span>)&nbsp;
+评论(<span id="post_comment_count">0</span>)&nbsp;
+<a href="https://i.cnblogs.com/EditPosts.aspx?postid=12530226" rel="nofollow">编辑</a>&nbsp;
+<a href="javascript:void(0)" onclick="AddToWz(12530226);return false;">收藏</a></div>
+        </div>
+<script src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/highlight.min.js"></script>
+<script>markdown_highlight();</script>
+<script>
+    var allowComments = true, cb_blogId = 556685, cb_blogApp = 'Android-Alvin', cb_blogUserGuid = 'a50ca4c4-34c4-4f83-7092-08d75c4ccf5b';
+    var cb_entryId = 12530226, cb_entryCreatedDate = '2020-03-20 10:47', cb_postType = 1; 
+    loadViewCount(cb_entryId);
+    loadSideColumnAd();
+</script><a name="!comments"></a>
+<div id="blog-comments-placeholder"></div>
+<script>
+    var commentManager = new blogCommentManager();
+    commentManager.renderComments(0);
+</script>
+<div id="comment_form" class="commentform">
+    <a name="commentform"></a>
+    <div id="divCommentShow"></div>
+    <div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" onclick="return RefreshCommentList();" id="lnk_RefreshComments" runat="server" clientidmode="Static">刷新评论</a><a href="https://www.cnblogs.com/Android-Alvin/p/12530226.html#" onclick="return RefreshPage();">刷新页面</a><a href="https://www.cnblogs.com/Android-Alvin/p/12530226.html#top">返回顶部</a></div>
+    <div id="comment_form_container" style="visibility: visible;"><div class="login_tips">
+    注册用户登录后才能发表评论，请 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return login(&#39;commentform&#39;);">登录</a>
+     或 
+    <a rel="nofollow" href="javascript:void(0);" class="underline" onclick="return register();">注册</a>，
+    <a href="https://www.cnblogs.com/">访问</a> 网站首页。
+</div></div>
+    <div class="ad_text_commentbox" id="ad_text_under_commentbox"></div>
+    <div id="ad_t2"><a href="http://www.ucancode.com/index.htm" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-ucancode&#39;)">【推荐】超50万行VC++源码: 大型组态工控、电力仿真CAD与GIS源码库</a><br><a href="https://brands.cnblogs.com/huawei" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-华为专区&#39;)">【推荐】了不起的开发者，挡不住的华为，园子里的品牌专区</a><br><a href="https://developer.aliyun.com/learning/trainingcamp/dashuju?utm_content=g_1000171216" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云大数据训练营&#39;)">【推荐】九大训练营同开 2020阿里云大数据独门绝学</a><br><a href="https://developer.aliyun.com/topic/ebook?utm_content=g_1000133217" target="_blank" onclick="ga(&#39;send&#39;, &#39;event&#39;, &#39;Link&#39;, &#39;click&#39;, &#39;T2-阿里云开发者社区&#39;)">【推荐】阿里技术人“藏经阁”，超全领域电子书大公开！</a><br></div>
+    <div id="opt_under_post"></div>
+    <div id="cnblogs_c1" class="c_ad_block">
+        <div id="div-gpt-ad-1592365906576-0" style="width: 300px; height: 250px;" data-google-query-id="CPv_o7LFp-sCFZeVvAodhpALZw"><div id="google_ads_iframe_/1090369/C1_0__container__" style="border: 0pt none;"><iframe id="google_ads_iframe_/1090369/C1_0" title="3rd party ad content" name="google_ads_iframe_/1090369/C1_0" width="300" height="250" scrolling="no" marginwidth="0" marginheight="0" frameborder="0" style="border: 0px; vertical-align: bottom;" data-google-container-id="1" data-load-complete="true" src="./面试还没搞懂OkHttp原理？看完这篇文章全明白了 - AndroidAlvin - 博客园_files/saved_resource.html"></iframe></div></div>
+    </div>
+    <div id="under_post_news"><div class="recomm-block"><b>相关博文：</b><br>·  <a title="Android面试题-OkHttp3源码分析" href="https://www.cnblogs.com/ldq2016/p/8796526.html" target="_blank" onclick="clickRecomItmem(8796526)">Android面试题-OkHttp3源码分析</a><br>·  <a title="Okhttp3 使用和原理（DEMO）" href="https://www.cnblogs.com/qlky/p/7246331.html" target="_blank" onclick="clickRecomItmem(7246331)">Okhttp3 使用和原理（DEMO）</a><br>·  <a title="OkHttp拦截器的实现原理" href="https://www.cnblogs.com/LuLei1990/p/5534791.html" target="_blank" onclick="clickRecomItmem(5534791)">OkHttp拦截器的实现原理</a><br>·  <a title="OkHttp 源码分析" href="https://www.cnblogs.com/mywy/p/5089242.html" target="_blank" onclick="clickRecomItmem(5089242)">OkHttp 源码分析</a><br>·  <a title="OkHttp3使用详解" href="https://www.cnblogs.com/liyutian/p/9473747.html" target="_blank" onclick="clickRecomItmem(9473747)">OkHttp3使用详解</a><br>»  <a target="_blank" href="https://recomm.cnblogs.com/blogpost/12530226">更多推荐...</a></div></div>
+    <div id="cnblogs_c2" class="c_ad_block" style="display: none;">
+        <div id="div-gpt-ad-1592366332455-0" style="width: 468px; height: 60px;" data-google-query-id="CPz_o7LFp-sCFZeVvAodhpALZw"><div id="google_ads_iframe_/1090369/C2_0__container__" style="border: 0pt none; width: 468px; height: 60px;"></div></div>
+    </div>
+    <div id="under_post_kb">
+<div class="itnews c_ad_block">
+    <b>最新 IT 新闻</b>:
+    <br>
+ ·          <a href="https://news.cnblogs.com/n/669830/" target="_blank">别唱衰了，吃播不会死，还会迎来“新春天”</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/669829/" target="_blank">阿里云将服务北京城市大脑建设 已合作全球30多城</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/669828/" target="_blank">马云：总有一些人什么都不信，为什么跟他们去生气</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/669827/" target="_blank">要成为中国版Wintel，飞腾CPU和麒麟软件缺什么？</a>
+        <br>
+ ·          <a href="https://news.cnblogs.com/n/669826/" target="_blank">消息称特斯拉已开始研发下一代电动汽车硬件</a>
+        <br>
+    » <a href="https://news.cnblogs.com/" title="IT 新闻" target="_blank">更多新闻...</a>
+</div></div>
+    <div id="HistoryToday" class="c_ad_block"></div>
+    <script type="text/javascript">
+        fixPostBody();
+        deliverBigBanner();
+setTimeout(function() { incrementViewCount(cb_entryId); }, 50);        deliverT2();
+        deliverC1C2();
+        loadNewsAndKb();
+        loadBlogSignature();
+LoadPostCategoriesTags(cb_blogId, cb_entryId);        LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+        GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+        loadOptUnderPost();
+        GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);
+    </script>
+</div>    </div>
+</div>
+            </div>
+        </div>
+
+        <div id="sideBar">
+            <div id="sideBarMain">
+                
+<div id="sidebar_news" class="newsItem">
+<h3 class="catListTitle">公告</h3>
+
+<div id="blog-news">
+    
+    <div id="profile_block">
+        昵称：
+        <a href="https://home.cnblogs.com/u/Android-Alvin/">
+            AndroidAlvin
+        </a>
+        <br>
+        园龄：
+        <a href="https://home.cnblogs.com/u/Android-Alvin/" title="入园时间：2019-10-30">
+            9个月
+        </a>
+        <br>
+        粉丝：
+        <a href="https://home.cnblogs.com/u/Android-Alvin/followers/">
+            15
+        </a>
+        <br>
+        关注：
+        <a href="https://home.cnblogs.com/u/Android-Alvin/followees/">
+            6
+        </a>
+        <div id="p_b_follow">
+<a href="javascript:void(0)" onclick="follow(&#39;a50ca4c4-34c4-4f83-7092-08d75c4ccf5b&#39;)">+加关注</a></div>
+        <script>getFollowStatus('a50ca4c4-34c4-4f83-7092-08d75c4ccf5b');</script>
+    </div>
+</div></div>
+
+<div id="sidebar_ad"></div>
+                <div id="calendar"><div id="blog-calendar" style="">
+
+<table id="blogCalendar" class="Cal" cellspacing="0" cellpadding="0" title="Calendar" border="0">
+    <tbody>
+        <tr>
+            <td colspan="7">
+                <table class="CalTitle" cellspacing="0" border="0">
+                    <tbody>
+                        <tr>
+                            <td class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/07/19&#39;); return false;">&lt;</a>
+                            </td>
+                            <td align="center">2020年8月</td>
+                            <td align="right" class="CalNextPrev">
+                                <a href="javascript:void(0);" onclick="loadBlogCalendar(&#39;2020/09/19&#39;); return false;">&gt;</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    <tr>
+        <th class="CalDayHeader" align="center" abbr="日" scope="col">日</th>
+        <th class="CalDayHeader" align="center" abbr="一" scope="col">一</th>
+        <th class="CalDayHeader" align="center" abbr="二" scope="col">二</th>
+        <th class="CalDayHeader" align="center" abbr="三" scope="col">三</th>
+        <th class="CalDayHeader" align="center" abbr="四" scope="col">四</th>
+        <th class="CalDayHeader" align="center" abbr="五" scope="col">五</th>
+        <th class="CalDayHeader" align="center" abbr="六" scope="col">六</th>
+    </tr>
+            <tr>
+                            <td class="CalOtherMonthDay" align="center">26</td>
+                            <td class="CalOtherMonthDay" align="center">27</td>
+                            <td class="CalOtherMonthDay" align="center">28</td>
+                            <td class="CalOtherMonthDay" align="center">29</td>
+                            <td class="CalOtherMonthDay" align="center">30</td>
+                            <td class="CalOtherMonthDay" align="center">31</td>
+                    <td class="CalWeekendDay" align="center">
+                        1
+                    </td>
+            </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            2
+                        </td>
+                            <td class="" align="center">
+                                3
+                            </td>
+                            <td class="" align="center">
+                                4
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/05.html"><u>5</u></a>
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/06.html"><u>6</u></a>
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/07.html"><u>7</u></a>
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/08.html"><u>8</u></a>
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            9
+                        </td>
+                            <td class="" align="center">
+                                10
+                            </td>
+                            <td class="" align="center">
+                                11
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/12.html"><u>12</u></a>
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/13.html"><u>13</u></a>
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/14.html"><u>14</u></a>
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            15
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            16
+                        </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/17.html"><u>17</u></a>
+                            </td>
+                            <td class="" align="center">
+                                <a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08/18.html"><u>18</u></a>
+                            </td>
+                            <td class="CalTodayDay" align="center">
+                                19
+                            </td>
+                            <td class="" align="center">
+                                20
+                            </td>
+                            <td class="" align="center">
+                                21
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            22
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            23
+                        </td>
+                            <td class="" align="center">
+                                24
+                            </td>
+                            <td class="" align="center">
+                                25
+                            </td>
+                            <td class="" align="center">
+                                26
+                            </td>
+                            <td class="" align="center">
+                                27
+                            </td>
+                            <td class="" align="center">
+                                28
+                            </td>
+                        <td class="CalWeekendDay" align="center">
+                            29
+                        </td>
+                </tr>
+                <tr>
+                        <td class="CalWeekendDay" align="center">
+                            30
+                        </td>
+                            <td class="" align="center">
+                                31
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                1
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                2
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                3
+                            </td>
+                            <td class="CalOtherMonthDay" align="center">
+                                4
+                            </td>
+                        <td class="CalOtherMonthDay" align="center">
+                            5
+                        </td>
+                </tr>
+    </tbody>
+</table></div></div>                
+                <script>loadBlogDefaultCalendar();</script>
+                <div id="leftcontentcontainer">
+                    <!-- begin:SingleColumn -->
+                    <div id="blog-sidecolumn">
+<!-- 搜索 -->
+<div id="sidebar_search" class="sidebar-block">
+    <div id="sidebar_search" class="mySearch">
+        <h3 class="catListTitle">搜索</h3>
+        <div id="sidebar_search_box">
+            <div id="widget_my_zzk" class="div_my_zzk">
+                <input type="text" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="zzk_go()" type="button" value="找找看" id="btnZzk" class="btn_my_zzk">
+            </div>
+            <div id="widget_my_google" class="div_my_zzk">
+                <input type="text" name="google_q" id="google_q" onkeydown="return google_go_enter(event);" class="input_my_zzk">&nbsp;<input onclick="google_go()" type="button" value="谷歌搜索" class="btn_my_zzk">
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 常用链接 -->
+<div id="sidebar_shortcut" class="sidebar-block">
+    
+<h3 class="catListTitle">
+常用链接
+</h3>
+<ul>
+    
+<li><a href="https://www.cnblogs.com/Android-Alvin/p/" title="我的博客的随笔列表">我的随笔</a></li>
+<li><a href="https://www.cnblogs.com/Android-Alvin/MyComments.html" title="我的发表过的评论列表">我的评论</a></li>
+<li><a href="https://www.cnblogs.com/Android-Alvin/OtherPosts.html" title="我评论过的随笔列表">我的参与</a></li>
+<li><a href="https://www.cnblogs.com/Android-Alvin/RecentComments.html" title="我的博客的评论列表">最新评论</a></li>
+<li><a href="https://www.cnblogs.com/Android-Alvin/tag/" title="我的博客的标签列表">我的标签</a></li>
+
+</ul>
+
+</div>
+
+<!-- 最新随笔 -->
+
+
+
+<!-- 我的标签 -->
+<div id="sidebar_toptags" class="sidebar-block">
+    
+<div class="catListTag">
+    <h3 class="catListTitle">我的标签</h3>
+    <ul>
+        
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%EF%BC%8CAndroid%E5%BC%80%E5%8F%91/">，Android开发</a>(179)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E9%98%BF%E9%87%8C/">阿里</a>(20)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E9%9D%A2%E8%AF%95/">面试</a>(19)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E5%AD%97%E8%8A%82%E8%B7%B3%E5%8A%A8/">字节跳动</a>(9)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/">性能优化</a>(7)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>(6)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E8%85%BE%E8%AE%AF/">腾讯</a>(5)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a>(3)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1/">今日头条</a>(3)
+        </li>
+        <li>
+            <a href="https://www.cnblogs.com/Android-Alvin/tag/%E7%A8%8B%E5%BA%8F%E5%91%98/">程序员</a>(3)
+        </li>
+    <li>
+        <a href="https://www.cnblogs.com/Android-Alvin/tag/">更多</a>
+    </li>
+
+    </ul>
+</div>
+
+</div>
+
+<!-- 积分与排名 -->
+
+
+<!-- 随笔分类、随笔档案、文章分类、新闻分类、相册、链接 -->
+<div id="sidebar_categories">
+    
+        <div class="catListPostArchive">
+            <h3 class="catListTitle">
+                
+随笔档案
+
+
+
+            </h3>
+            <ul>
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/08.html" rel="" target="">
+    2020年8月(9)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/07.html" rel="" target="">
+    2020年7月(2)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/05.html" rel="" target="">
+    2020年5月(5)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/04.html" rel="" target="">
+    2020年4月(25)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/03.html" rel="" target="">
+    2020年3月(39)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2020/02.html" rel="" target="">
+    2020年2月(26)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2019/12.html" rel="" target="">
+    2019年12月(48)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2019/11.html" rel="" target="">
+    2019年11月(67)
+</a>
+
+                            
+
+                        </li>
+                        
+                        <li>
+                            
+<a href="https://www.cnblogs.com/Android-Alvin/archive/2019/10.html" rel="" target="">
+    2019年10月(1)
+</a>
+
+                            
+
+                        </li>
+                        
+            </ul>
+        </div>
+
+</div>
+
+<!-- 最新评论 -->
+<div id="sidebar_recentcomments" class="sidebar-block">
+    
+</div>
+
+
+
+<!-- 阅读排行榜 -->
+<div id="sidebar_topviewedposts" class="sidebar-block">
+    
+<div id="topview_posts_wrap">
+    <h3 class="catListTitle">阅读排行榜</h3>
+    <div id="TopViewPostsBlock">
+        <ul style="word-break:break-all">
+                    <li>
+                        <a href="https://www.cnblogs.com/Android-Alvin/p/12530226.html">
+                            1. 面试还没搞懂OkHttp原理？看完这篇文章全明白了(1472)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/Android-Alvin/p/12465949.html">
+                            2. Android 后台运行白名单，优雅实现保活(1201)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/Android-Alvin/p/12520054.html">
+                            3. Android 11 中的存储机制更新(975)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/Android-Alvin/p/12329824.html">
+                            4. 疫情结束后，会影响程序员年后找工作吗？(893)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.cnblogs.com/Android-Alvin/p/12713385.html">
+                            5. 阿里P10赵海平跳槽字节跳动：深度解析跳槽从开始到结束完整流程！(780)
+                        </a>
+                    </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+<!-- 评论排行榜 -->
+<div id="sidebar_topcommentedposts" class="sidebar-block">
+    
+</div>
+
+<!-- 推荐排行榜 -->
+<div id="sidebar_topdiggedposts" class="sidebar-block">
+    
+<div id="topdigg_posts_wrap">
+    <div class="catListView">
+        <h3 class="catListTitle">推荐排行榜</h3>
+        <div id="TopDiggPostsBlock">
+            <ul style="word-break: break-all">
+                        <li>
+                            <a href="https://www.cnblogs.com/Android-Alvin/p/12672294.html">
+                                1. 面试官：简历上如果写Glide，请注意以下几点...(1)
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.cnblogs.com/Android-Alvin/p/12529765.html">
+                                2. CoordinatorLayout使用详解: 打造折叠悬浮效果(1)
+                            </a>
+                        </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div></div>
+                    <script>loadBlogSideColumn();</script>
+                    <!-- end:  SingleColumn -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+    <div id="footer">
+        <!--done-->
+Copyright © 2020 AndroidAlvin
+<br><span id="poweredby">Powered by .NET Core on Kubernetes</span>
+
+    </div>
+</div>
+
+    
+
+
+</body></html>
